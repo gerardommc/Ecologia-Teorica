@@ -1,10 +1,10 @@
 ---
-title: "Ecología de poblaciones"
+title: "Ecología Teórica"
 description: "Licenciatura en Ecología"
 author: "Gerardo Martín"
 output:
    prettydoc::html_pretty:
-      theme: cayman
+      theme: hpstr
       highlight: github
 ---
 
@@ -12,41 +12,11 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Ver [Encuadre](Encuadre.pdf) y [Programa del curso](Programa.pdf)
+Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf) y [Calendario de participaciones](Calendario-EcoTeorica.xlsx)
     
-1. Introducción a la ecología de poblaciones
+1. Introducción a la Ecología Teórica
 
-    - [Preguntas centrales de la ecología de poblaciones](Unidad-1/Preguntas-centrales.pdf)
-    
-    - [Definición de individuo](Unidad-1/Individuos.pdf)
-          
-    - [Definición de población](Unidad-1/Poblacion.pdf)
-    
-    - [Ciclos de vida de los organismos](Unidad-1/Ciclos-vida.pdf)
-    
-2. La demografía
+2. Metapoblaciones y Biogeografía de Islas
 
-    - [Métodos para determinar el tamaño poblacional](Unidad-2/Estimacion-tamano.pdf)
-    
-    - [Práctica de estimación de tamaño poblacional](Unidad-2/Practica-estimacion.html)
-    
-    - [Tablas de vida](Unidad-2/Tablas-vida.pdf)
+3. Epidemias
 
-    - [Curvas de supervivencia](Unidad-2/Curvas-sup.pdf)
-    
-    - [Matrices de proyección poblacional](Unidad-2/Matrices-proyeccion.pdf)
-
-    - [Modelos de crecimiento poblacional: competencia intraespecífica](Unidad-2/Modelos-crecimiento.pdf)
-    
-    - [Preguntas de práctica de competencia intraespecífica](Unidad-2/Preguntas-intra.html)
-    
-    - [Regulación de las poblaciones](Unidad-2/Regulacion-poblaciones.pdf)
-    
-3. Evolución de historias de vida
-
-    - [Componentes de la historia de vida](Unidad-3/Componentes-historia.pdf)
-    
-    - [Teoría de la selección *r* y *K*](Unidad-3/Seleccion-r-K.pdf)
-    
-    - [Compromisos](Unidad-3/Compromisos.pdf)
-  

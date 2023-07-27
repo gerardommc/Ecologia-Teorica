@@ -14,9 +14,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf) y [Calendario de participaciones](Calendario-EcoTeorica.xlsx)
     
-1. Introducción a la Ecología Teórica
+1. [Introducción a la Ecología Teórica](Historia.pdf)
 
-2. Metapoblaciones y Biogeografía de Islas
+2. [Metapoblaciones y Biogeografía de Islas](Metapoblaciones.pdf)
 
-3. Epidemias
+    - [Modelos de metapoblaciones](Modelos-meta.pdf)
+    
+    - [Modelos de islas](Modelos-islas.pdf)
+    
+    - [Simulación y análisis de modelos](Simulacion-meta.Rmd)
+
+3. [Epidemias](Epidemias.pdf)
+
+    - [Modelos de epidemias](Modelos-epi.pdf)
+    
+    - [Simulación y análisis de modelos](Simulacion-epi.Rmd)
 

@@ -1,0 +1,124 @@
+---
+title: "Metapoblaciones" 
+subtitle: "Integración con `deSolve`"
+author: "Gerardo Martín"
+fontsize: 11pt
+output: 
+  beamer_presentation:
+    theme: metropolis
+    highlight: pygments
+    slide_level: 3
+    fig_height: 6
+    fig_caption: true
+    latex_engine: xelatex
+    keep_tex: true
+date: '28-07-2023'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Integración con paquete `deSolve`
+
+## Necesidad real
+
+```{r echo=F, fig.height=4, fig.width=4, fig.cap="Línea negra es la solución analítica. Roja es solución de Euler"}
+r <- 0.1; h <- 0.5; t <- 10
+N <- numeric(t/h); N[1] <- 10
+for(i in 2:length(N)){N[i] = N[i-1] + r*N[i-1]*h}
+N1 <- 10 * exp(seq(0, 10, len = 20)*r)
+plot(seq(1, 10, len = 20), N, type = "l", col = "red", xlab = "Tiempo", ylab = "N")
+lines(seq(1, 10, len = 20), N1)
+```
+
+## Necesidad real
+
+- El método de Euler es muy inexacto
+
+- El error de integración se acumula
+
+- Se puede controlar, disminuyendo $h$, pero se vuelve leeento
+
+- Métodos como Runge-Kutta de 2 y 4 pasos tienen menos error
+
+    - Adams-Bashford son más sofisticados y rápidos
+    
+- Están implementados en paquete `deSolve` de **R**
+
+## Uso de `deSolve`
+
+1. Crear función del modelo
+
+2. Crear objeto con valores de parámetros
+
+3. Establecer condiciones iniciales
+
+4. Correr simulación confunción `lsoda`
+
+# La función del modelo
+
+## Crear funciones con **R**
+
+- Funciones: código que contiene órdenes para R
+
+- Se suelen crear cuando se necesita repetir una operación
+
+- Sintaxis:
+
+```{r echo = T}
+f <- function(x){print(x)}
+```
+
+- Para especificar una función se crea un objeto que contentrá la órdenes
+
+- El objeto se llama, y entre `()` se especifican los argumentos
+
+## Crear funciones con **R**
+
+- La función `f` requiere un sólo argumento de nombre `x`
+
+- Una vez que llamamos `a` tenemos que especificar el valor de `x`, y **R** imprimirá el resultado:
+
+```{r echo = T}
+f(1)
+```
+
+## Funciones con más argumentos
+
+Las funciones pueden tomar más de un argumento:
+
+```{r echo = T}
+g <- function(x, y){print(x + y)}
+g(1, 3)
+```
+
+Ó utilizar argumentos de más de un tipo (números y caracteres)
+
+```{r echo = T}
+h <- function(x, y, z = "a"){print(paste0(x + y, "=", z))}
+h(1, 2, "b")
+```
+
+## Especificando la función del modelo exponencial
+
+La función necesita tres argumentos, el tiempo `t`, los valores `y` y los parámetros del modelo:
+
+```{r echo=T, eval = F}
+expon <- function(t, y, parametros){
+  
+}
+```
+
+Entre los corchetes `{}`, especificamos las posiciones de `y` que contienen las variables de estado (`N`)
+
+```{r echo = T, eval = F}
+N <- y[1]
+```
+
+las operaciones de que consiste el modelo, el exponencial:
+
+```{r echo = T, eval = F}
+dN <- r * N
+```
+

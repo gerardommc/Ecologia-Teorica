@@ -1,0 +1,305 @@
+---
+title: "Metapoblaciones" 
+subtitle: "Modelos"
+author: "Gerardo Martín"
+fontsize: 11pt
+output: 
+  beamer_presentation:
+    theme: metropolis
+    highlight: pygments
+    slide_level: 3
+    fig_height: 6
+    fig_caption: true
+    latex_engine: xelatex
+    keep_tex: true
+date: '28-07-2023'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'pdf')
+```
+
+## Intro
+
+- Modelos representan fracción de parches ocupados en un sistema de parches de hábitat
+
+- Los modelos son mecanínsticos
+
+    - Representan explícitamente parte del fenómeno
+    
+- Basados en ecuaciones diferenciales
+
+    - Tiempo contínuo vs Tiempo discreto
+    
+## Recordatorio
+
+Ecuación diferencial:
+
+$$\frac{dN}{dt} = r N$$
+
+- $dN/dt = N'(t)$, es la derivada de $N$ con respecto de $t$
+
+    - Es el cambio neto de la población por unidad de tiempo
+
+- $r$ es la tasa instantánea de cambio de $N$
+
+    - Número nuevo de individos per cápita que ingresarán a población
+    
+## Ejemplo con función lineal
+
+$$f(x) = a + bx$$
+
+La derivada de $f(x)$ es;
+
+$$f'(x) = b$$
+
+Y representada con la notación de Leibniz:
+
+$$\frac{df(x)}{dx} = b$$
+
+## Ejemplo con función cuadrática
+
+$$f(x) = a + bx + cx^2$$
+
+La derivada de $f(x)$ es;
+
+$$f'(x) = b + cx$$
+
+Y representada con la notación de Leibniz:
+
+$$\frac{df(x)}{dx} = b + cx$$
+
+## Modelo exponencial
+
+En la ecuación
+
+$$\frac{dN}{dt} = r N$$
+
+El tiempo está implícito, pero se puede integrar para obtener:
+
+$$N(t) = N_0 e^{rt}$$
+
+## Integración numérica
+
+A veces no es posible integrar analíticamente, por lo que se recurre a integración numérica, invirtiendo la definición de derivada:
+
+$$f'(x) = \lim_{h \rightarrow 0} \frac{f(x + h) - f(x)}{h}$$
+
+En las ecuaciones diferenciales conocemos $f'(x)$, pero queremos conocer $f(x + h)$, por lo que si asumimos que $h > 0$ es constante, podemos resolver para $f(x + h)$:
+
+$$f(x + h) = f(x) + f'(x) \times h$$ 
+
+## Integración numérica
+
+Método de Euler, base de todas integración numérica
+
+Inicio de rutina de integración:
+
+1. Proponemos valor inicial de $f(x)$ y valor fijo de $h$, sustituimos
+
+2. Hacemos el cálculo de $f'(x)$
+
+3. Añadimos $f(x) + f'(x) \times h$
+
+4. Utilizamos el valor obtenido de $f(x + h)$ como $f(x)$ y se repite el proceso
+
+
+# Ejemplo de integración numérica
+
+## Modelo exponencial
+
+1. $r = 0.1$, $N(0) = 10$, $h = 0.5$
+
+2. Queremos conocer $N(0.5) = N(0) + N'(0) \times 0.5$
+
+3. $N'(0) = 0.1 \times N(0) = 0.1 \times 10$
+
+4. $N(0.5) = 10 + 0.1 \times 10 \times 0.5 = 11.5$$
+
+5. Pasos 2-4 se repiten:
+
+$$N(1) = N(0.5) + N'(0.5) \times h = 11.5 + 0.1\times 11.5 \times 0.5 = 12.075$$
+$$N(1.5) = N(1) + N'(1) \times h = 12.075 + 0.1\times 12.075 \times 0.5 = 12.67875$$
+
+## Solución para 10 pasos de tiempo
+
+```{r echo = F, fig.width=4, fig.height=4}
+r <- 0.1; h <- 0.5; t <- 10
+N <- numeric(t/h); N[1] <- 10
+for(i in 2:length(N)){N[i] = N[i-1] + r*N[i-1]*h}
+plot(seq(1, 10, len = 20), N, type = "l", col = "red", xlab = "Tiempo", ylab = "N")
+```
+
+## Utilizando R para hacer integración numérica
+
+Iniciando valores
+
+```{r echo = T}
+r <- 0.1 #Parámetro
+h <- 0.5 #Longitud del paso
+t <- 10 #Número de unidades de tiempo
+N <- numeric(t/h) #Vector que contiene valores
+N[1] <- 10 #Tamaño inicial
+```
+
+Iteraciones de la integración
+
+```{r echo = T}
+for(i in 2:length(N)){
+      N[i] = N[i-1] + r*N[i-1]*h
+  }
+```
+
+# El modelo básico de metapoblaciones
+
+## Modelo de Levins
+
+- Representa proporción de parches de hábitat ocupados por una especie
+
+- Parches ocupados dependen de parches ocupados:
+
+$$\frac{dp}{dt} = cp(1-p)$$
+
+- $p$ es la proporción de parches ocupados
+
+- $c$ es la tasa de colonización
+
+## Racional
+
+- El máximo de parches ocupados es 1
+
+- La colonización disminuye si hay muchos ocupados
+
+    - Baja probabilidad de encontrar parches desocupados
+    
+## Integración
+
+```{r echo = T}
+c <- 0.5; h <- 0.5; t <- 20
+p <- numeric(t/h); p[1] <- 0.1
+for(i in 2:length(p)){
+  p[i] <- p[i-1] + c*p[i-1]*(1-p[i-1]) * h
+}
+```
+
+## Integración
+
+```{r echo=F, fig.height=4, fig.width=4}
+plot(seq(1, 10, len = length(p)), p, type = "l", col = "red",
+     xlab = "Tiempo", ylab = "p")
+```
+
+## Condiciones de estabilidad
+
+- Sistema es estable cuando $dp/dt = 0$
+
+$$cp(1-p) = 0$$
+
+- Por lo tanto hay dos puntos en que la fracción de parches se mantiene constante:
+
+1. $p = 0$
+
+2. $p = 1$
+
+## Supuestos del modelo
+
+- Los individuos de mueven aleatoriamente entre parches
+
+- Sólo hay colonizaciones
+
+- No hay extinciones
+
+- Se pueden incluir extinciones en el sistema:
+
+$$ \frac{dp}{dt} = cp(1-p) - ep$$
+
+- $e$ es la tasa de extinción
+
+## Puntos de equilibrio
+
+1. ¿Cuántos hay?
+
+2. ¿Por qué?
+
+3. ¿Cuál(es) es(son)?
+
+4. Utilizando el código del modelo simple, integra el modelo con tasa de extinción
+
+5. ¿Qué otros aspectos importantes debería incluir in modelo de metapoblaciones?
+
+# Lluvia de propágulos
+
+## Diferencias con Levins
+
+- En modelo de Levins la fracción de parches ocupados siempre proviene de otros parches ocupados
+
+- Existe posibilidad de inmigración de propagulos de otras fuentes
+
+- Lluvia de propagulos sugiere eventos aleatorios de inmigración:
+
+$$\frac{dp}{dt} = c (1-p) - ep$$
+
+- $c$ es la probabilidad de inmigración de otras fuentes
+
+- ¿Punto(s) de equilibrio?
+
+## Punto(s) de equilibrio
+
+$$p^* = \frac{c}{c-e}$$
+
+Si $c = 0.1$ y $e = 0.05$
+
+$$p^* = \frac{0.1}{0.1+0.05} = 0.666...$$
+
+Aprximadamente el 67% de los parches permanecerán ocupados contstantemente
+
+## Modelo de Levins con lluvia de propágulos
+
+Modelo
+
+$$\frac{dp}{dt} = (c + c_e p)(1-p) - ep$$
+
+- $c$ es la probabilidad de importación de propágulos
+
+- $c_e$ es la tasa de colonización
+
+- $e$ es la tasa de extinción
+
+## Modelo de Levins con efecto de rescate
+
+- Rescate: probabilidad de extinción disminuye cuando la fracción ocupada de parches es alta.
+
+- $E$ es la extinción total y es afectada por los parches desocupados ($1-p$):
+
+$$E = -ep(1-p)$$
+
+E incluimos en el modelo de Levins con lluvia de propágulos:
+
+$$\frac{dp}{dt} = (c + c_e p)(1-p) - ep(1-p)$$
+
+# Destrucción de hábitat
+
+## Racional
+
+- La destrucción de hábitats es el problema definitorio del antropoceno
+
+- ¿Cómo podemos tomarlo en cuenta para las metapoblaciones?
+
+- La destrucción de hábitats debería de afectar la probabilidad de inmigración
+
+    - Mas destrucción, menos atractivos son los hábitats, menos inmigración
+    
+- En Levins, la inmigración disminuye con fracción ocupada, por lo tanto...
+
+## El modelo
+
+Modificación del modelo clásico (sin lluvia de propágulos ni rescate)
+
+$$\frac{dp}{dt} = cp(1-D-p) - ep$$
+
+- donde $D$ es la fracción de hábitats destruidos
+
+- Punto(s) de equilibrio:
+
+$$p^* = 1 - \frac{e}{c} - D$$
+

@@ -500,4 +500,159 @@ simulaciones}\label{gruxe1fica-de-las-simulaciones}}
 \includegraphics{deSolve_files/figure-beamer/unnamed-chunk-19-1.pdf}
 \end{frame}
 
+\hypertarget{simulaciuxf3n-de-un-modelo-con-dos-variables-de-estado}{%
+\section{Simulación de un modelo con dos variables de
+estado}\label{simulaciuxf3n-de-un-modelo-con-dos-variables-de-estado}}
+
+\hypertarget{el-modelo}{%
+\subsection{El modelo}\label{el-modelo}}
+
+\begin{frame}{El modelo}
+\begin{align}
+    \frac{N_1}{dt} &= r N_1 (1-N_1/K) + i N_2-e N_1 \\
+    \frac{N_2}{dt} &= r N_2 (1-N_2/K) + i N_1-e N_2
+\end{align}
+\end{frame}
+
+\hypertarget{la-funciuxf3n}{%
+\subsection{La función}\label{la-funciuxf3n}}
+
+\begin{frame}[fragile]{La función}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mig }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(t, y, parms)\{}
+  \FunctionTok{with}\NormalTok{(parms, \{}
+\NormalTok{      N1 }\OtherTok{\textless{}{-}}\NormalTok{ y[}\DecValTok{1}\NormalTok{]}
+\NormalTok{      N2 }\OtherTok{\textless{}{-}}\NormalTok{ y[}\DecValTok{2}\NormalTok{]}
+  
+\NormalTok{    dN1 }\OtherTok{\textless{}{-}}\NormalTok{ r }\SpecialCharTok{*}\NormalTok{ N1 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ N1}\SpecialCharTok{/}\NormalTok{K) }\SpecialCharTok{+}\NormalTok{ m2 }\SpecialCharTok{*}\NormalTok{ N2 }\SpecialCharTok{{-}}\NormalTok{ m1 }\SpecialCharTok{*}\NormalTok{ N1}
+\NormalTok{    dN2 }\OtherTok{\textless{}{-}}\NormalTok{ r }\SpecialCharTok{*}\NormalTok{ N2 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ N2}\SpecialCharTok{/}\NormalTok{K) }\SpecialCharTok{+}\NormalTok{ m1 }\SpecialCharTok{*}\NormalTok{ N1 }\SpecialCharTok{{-}}\NormalTok{ m2 }\SpecialCharTok{*}\NormalTok{ N2}
+    
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(dN1, dN2)))}
+\NormalTok{  \})}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\hypertarget{t-y-parms-1}{%
+\subsection{\texorpdfstring{\texttt{t}, \texttt{y},
+\texttt{parms}}{t, y, parms}}\label{t-y-parms-1}}
+
+\begin{frame}[fragile]{\texttt{t}, \texttt{y}, \texttt{parms}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.1}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\AttributeTok{N1 =} \DecValTok{10}\NormalTok{, }\AttributeTok{N2 =} \DecValTok{0}\NormalTok{)}
+\NormalTok{parms }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{r =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{K =} \DecValTok{25}\NormalTok{,}
+              \AttributeTok{m1 =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{m2 =} \FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\hypertarget{la-simulaciuxf3n}{%
+\subsection{La simulación}\label{la-simulaciuxf3n}}
+
+\begin{frame}[fragile]{La simulación}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sim.mig }\OtherTok{\textless{}{-}} \FunctionTok{lsoda}\NormalTok{(}\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{times =}\NormalTok{ t, }
+                 \AttributeTok{parms =}\NormalTok{ parms,}
+                 \AttributeTok{func =}\NormalTok{ mig)}
+\FunctionTok{head}\NormalTok{(sim.mig, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      time       N1        N2
+## [1,]  0.0 10.00000 0.0000000
+## [2,]  0.1 10.20099 0.1025226
+## [3,]  0.2 10.40392 0.2101706
+\end{verbatim}
+\end{frame}
+
+\hypertarget{preparando-los-datos-para-graficar}{%
+\subsection{Preparando los datos para
+graficar}\label{preparando-los-datos-para-graficar}}
+
+\begin{frame}[fragile]{Preparando los datos para graficar}
+\begin{enumerate}
+\tightlist
+\item
+  Necesitamos transformar la tabla generada a formato largo
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sim.mig.df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(sim.mig)}
+\NormalTok{sim.mig.largo }\OtherTok{\textless{}{-}}\NormalTok{ reshape2}\SpecialCharTok{::}\FunctionTok{melt}\NormalTok{(sim.mig.df, }\AttributeTok{id.vars =} \StringTok{"time"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(sim.mig.largo, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   time variable    value
+## 1  0.0       N1 10.00000
+## 2  0.1       N1 10.20099
+## 3  0.2       N1 10.40392
+\end{verbatim}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Necesitamos cargar el paquete \texttt{ggplot2}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\hypertarget{graficando-con-ggplot2}{%
+\subsection{\texorpdfstring{Graficando con
+\texttt{ggplot2}}{Graficando con ggplot2}}\label{graficando-con-ggplot2}}
+
+\begin{frame}[fragile]{Graficando con \texttt{ggplot2}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(sim.mig.largo) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ time, }
+                                      \AttributeTok{y =}\NormalTok{ value, }
+                                      \AttributeTok{colour =}\NormalTok{ variable))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\item
+  En \texttt{ggplot}, llamamos la tabla que contiene los datos
+\item
+  A \texttt{ggplot} agregamos elementos geométricos, para líneas:
+  \texttt{geom\_line}
+\item
+  A los elementos geométricos especificamos los elementos ``estéticos''
+  con \texttt{aes}
+\item
+  En \texttt{aes} indicamos las coordenadas \texttt{x,\ y} y la variable
+  que indica el color de las líneas
+\end{enumerate}
+\end{frame}
+
+\hypertarget{graficando-con-ggplot2-1}{%
+\subsection{\texorpdfstring{Graficando con
+\texttt{ggplot2}}{Graficando con ggplot2}}\label{graficando-con-ggplot2-1}}
+
+\begin{frame}{Graficando con \texttt{ggplot2}}
+\includegraphics{deSolve_files/figure-beamer/unnamed-chunk-26-1.pdf}
+\end{frame}
+
+\hypertarget{una-representaciuxf3n-alternativa-de-la-trayectoria}{%
+\subsection{Una representación alternativa de la
+trayectoria}\label{una-representaciuxf3n-alternativa-de-la-trayectoria}}
+
+\begin{frame}{Una representación alternativa de la trayectoria}
+\includegraphics{deSolve_files/figure-beamer/unnamed-chunk-27-1.pdf}
+\end{frame}
+
 \end{document}

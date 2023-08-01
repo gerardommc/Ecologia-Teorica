@@ -1,0 +1,47 @@
+---
+title: "Biogeografía de islas" 
+subtitle: "Modelos"
+author: "Gerardo Martín"
+fontsize: 11pt
+output: 
+  beamer_presentation:
+    theme: metropolis
+    highlight: pygments
+    slide_level: 3
+    fig_height: 6
+    fig_caption: true
+    latex_engine: xelatex
+    keep_tex: true
+date: '28-07-2023'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'pdf')
+```
+
+## Intro
+
+- Modelos de metapoblaciones $\rightarrow$ parches ocupados por poblaciones por una sola especie
+
+- Modelos de islas $\rightarrow$ parches ocupados por varias especies
+
+## Los métodos
+
+- Crearemos un conjunto de parches de hábitat
+
+- Parches estarán conectados con parches adyacentes
+
+- Conjunto de parches: matriz de coordenadas geográficas
+
+- Conexiones entre parches: matriz que indica pares de parches conectados
+
+## Creando la matriz de coordenadas
+
+```{r echo=T, fig.height=3, fig.width=3, fig.align='center'}
+parches <- expand.grid(x = 1:4, y = 1:4)
+plot(parches$x, parches$y)
+```
+
+## Matriz de adyacencias
+
+Ponemos esto y lo otro...

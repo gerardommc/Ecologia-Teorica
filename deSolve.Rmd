@@ -161,7 +161,9 @@ parametros <- list(r = 0.1)
 ```{r echo = T}
 library(deSolve)
 
-sim <- lsoda(y = y, times = t, parms = parametros, func = expon)
+sim <- lsoda(y = y, times = t, 
+             parms = parametros, 
+             func = expon)
 ```
 
 `lsoda` es la función de `deSolve` que hará la simulación
@@ -241,7 +243,7 @@ mig <- function(t, y, parms){
     dN1 <- r * N1 * (1 - N1/K) + m2 * N2 - m1 * N1
     dN2 <- r * N2 * (1 - N2/K) + m1 * N1 - m2 * N2
     
-    return(list(dN1, dN2))
+    return(list(c(dN1, dN2)))
   })
 }
 ```
@@ -261,7 +263,52 @@ parms <- list(r = 0.5, K = 25,
 sim.mig <- lsoda(y = y, times = t, 
                  parms = parms,
                  func = mig)
-head(sim.mig)
+head(sim.mig, 3)
 ```
 
+## Preparando los datos para graficar
+
+1. Necesitamos transformar la tabla generada a formato largo
+
+```{r echo = T, warning = F}
+sim.mig.df <- data.frame(sim.mig)
+sim.mig.largo <- reshape2::melt(sim.mig.df, id.vars = "time")
+head(sim.mig.largo, 3)
+```
+
+2. Necesitamos cargar el paquete `ggplot2`
+
+```{r echo = T, warning = F}
+library(ggplot2)
+```
+
+## Graficando con `ggplot2`
+
+```{r eval=F, echo=T}
+ggplot(sim.mig.largo) + geom_line(aes(x = time, 
+                                      y = value, 
+                                      colour = variable))
+```
+
+1. En `ggplot`, llamamos la tabla que contiene los datos
+
+2. A `ggplot` agregamos elementos geométricos, para líneas: `geom_line`
+
+3. A los elementos geométricos especificamos los elementos "estéticos" con `aes`
+
+4. En `aes` indicamos las coordenadas `x, y` y la variable que indica el color de las líneas
+
+## Graficando con `ggplot2`
+
+```{r echo=F, fig.height=3.5, fig.width=4}
+ggplot(sim.mig.largo) + geom_line(aes(x = time, 
+                                      y = value, 
+                                      colour = variable))
+```
+
+## Una representación alternativa de la trayectoria
+
+```{r echo=F, fig.height=4, fig.width=3.5}
+ggplot(sim.mig.df) + geom_line(aes(x = N1, y = N2))
+```
 

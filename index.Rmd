@@ -20,6 +20,8 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf) y [Calendario de particip
 
     - [Modelos de metapoblaciones](Modelos-meta.pdf)
     
+    - [Práctica de **R**](deSolve.pdf)
+    
     - [Modelos de islas](Modelos-islas.pdf)
     
     - [Simulación y análisis de modelos](Simulacion-meta.Rmd)

@@ -308,7 +308,7 @@ La función necesita tres argumentos, el tiempo \texttt{t}, los valores
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{expon }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(t, y, parametros)\{}
+\NormalTok{expon }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(t, y, parms)\{}
   
 \NormalTok{\}}
 \end{Highlighting}
@@ -330,6 +330,174 @@ las operaciones de que consiste el modelo, el exponencial:
 \NormalTok{dN }\OtherTok{\textless{}{-}}\NormalTok{ r }\SpecialCharTok{*}\NormalTok{ N}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
+
+\hypertarget{funciuxf3n-completa-del-modelo}{%
+\subsection{Función completa del
+modelo}\label{funciuxf3n-completa-del-modelo}}
+
+\begin{frame}[fragile]{Función completa del modelo}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{expon }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(t, y, parms)\{}
+\NormalTok{  N }\OtherTok{\textless{}{-}}\NormalTok{ y[}\DecValTok{1}\NormalTok{]}
+  \FunctionTok{with}\NormalTok{(parametros,\{}
+\NormalTok{    dN }\OtherTok{\textless{}{-}}\NormalTok{ r }\SpecialCharTok{*}\NormalTok{ N}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(dN))}
+\NormalTok{  \})}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+los argumentos \texttt{t} y \texttt{parms} los veremos a continuación
+\end{frame}
+
+\hypertarget{argumentos-de-la-funciuxf3n}{%
+\subsection{Argumentos de la
+función}\label{argumentos-de-la-funciuxf3n}}
+
+\begin{frame}[fragile]{Argumentos de la función}
+\texttt{t} es una secuencia de valores del tiempo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{y} es un objeto que sólo contiene las condiciones iniciales:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{parms} es una lista que contiene los valores que cada parámetro:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{parametros }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{r =} \FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\hypertarget{llamando-desolve-para-correr-simulaciuxf3n}{%
+\subsection{\texorpdfstring{Llamando \texttt{deSolve} para correr
+simulación}{Llamando deSolve para correr simulación}}\label{llamando-desolve-para-correr-simulaciuxf3n}}
+
+\begin{frame}[fragile]{Llamando \texttt{deSolve} para correr simulación}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(deSolve)}
+
+\NormalTok{sim }\OtherTok{\textless{}{-}} \FunctionTok{lsoda}\NormalTok{(}\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{times =}\NormalTok{ t, }\AttributeTok{parms =}\NormalTok{ parametros, }\AttributeTok{func =}\NormalTok{ expon)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{lsoda} es la función de \texttt{deSolve} que hará la simulación
+
+Los argumentos, ¿se explican solos?
+\end{frame}
+
+\hypertarget{explorando-la-salida-de-lsoda}{%
+\subsection{\texorpdfstring{Explorando la salida de
+\texttt{lsoda}}{Explorando la salida de lsoda}}\label{explorando-la-salida-de-lsoda}}
+
+\begin{frame}[fragile]{Explorando la salida de \texttt{lsoda}}
+Podemos imprimir las primeras filas
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(sim)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      time        1
+## [1,]  0.0 10.00000
+## [2,]  0.1 10.10050
+## [3,]  0.2 10.20202
+## [4,]  0.3 10.30455
+## [5,]  0.4 10.40811
+## [6,]  0.5 10.51271
+\end{verbatim}
+\end{frame}
+
+\hypertarget{explorando-la-salida-de-lsoda-1}{%
+\subsection{\texorpdfstring{Explorando la salida de
+\texttt{lsoda}}{Explorando la salida de lsoda}}\label{explorando-la-salida-de-lsoda-1}}
+
+\begin{frame}{Explorando la salida de \texttt{lsoda}}
+\includegraphics{deSolve_files/figure-beamer/unnamed-chunk-15-1.pdf}
+\end{frame}
+
+\hypertarget{simulaciuxf3n-de-un-modelo-con-muxe1s-de-un-paruxe1metro}{%
+\section{Simulación de un modelo con más de un
+parámetro}\label{simulaciuxf3n-de-un-modelo-con-muxe1s-de-un-paruxe1metro}}
+
+\hypertarget{funciuxf3n-del-modelo-de-levins}{%
+\subsection{Función del modelo de
+levins}\label{funciuxf3n-del-modelo-de-levins}}
+
+\begin{frame}[fragile]{Función del modelo de levins}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{levins }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(t, y, parms)\{}
+\NormalTok{  p }\OtherTok{\textless{}{-}}\NormalTok{ y[}\DecValTok{1}\NormalTok{]}
+  \FunctionTok{with}\NormalTok{(parms, \{}
+\NormalTok{    dp }\OtherTok{\textless{}{-}}\NormalTok{ c}\SpecialCharTok{*}\NormalTok{p}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{p) }\SpecialCharTok{{-}}\NormalTok{ e}\SpecialCharTok{*}\NormalTok{p}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(dp))}
+\NormalTok{  \})}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\hypertarget{t-y-parms}{%
+\subsection{\texorpdfstring{\texttt{t}, \texttt{y},
+\texttt{parms}}{t, y, parms}}\label{t-y-parms}}
+
+\begin{frame}[fragile]{\texttt{t}, \texttt{y}, \texttt{parms}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.1}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FloatTok{0.1}
+\NormalTok{parms }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{c =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{e =} \FloatTok{0.05}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\hypertarget{simulando-levins}{%
+\subsection{Simulando Levins}\label{simulando-levins}}
+
+\begin{frame}[fragile]{Simulando Levins}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sim.lev }\OtherTok{\textless{}{-}} \FunctionTok{lsoda}\NormalTok{(}\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{times =}\NormalTok{ t, }
+                 \AttributeTok{parms =}\NormalTok{ parms,}
+                 \AttributeTok{func =}\NormalTok{ levins)}
+\FunctionTok{head}\NormalTok{(sim.lev)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      time         1
+## [1,]  0.0 0.1000000
+## [2,]  0.1 0.1040708
+## [3,]  0.2 0.1082849
+## [4,]  0.3 0.1126455
+## [5,]  0.4 0.1171553
+## [6,]  0.5 0.1218178
+\end{verbatim}
+\end{frame}
+
+\hypertarget{gruxe1fica-de-las-simulaciones}{%
+\subsection{Gráfica de las
+simulaciones}\label{gruxe1fica-de-las-simulaciones}}
+
+\begin{frame}{Gráfica de las simulaciones}
+\includegraphics{deSolve_files/figure-beamer/unnamed-chunk-19-1.pdf}
 \end{frame}
 
 \end{document}

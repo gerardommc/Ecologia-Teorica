@@ -105,7 +105,7 @@ h(1, 2, "b")
 La función necesita tres argumentos, el tiempo `t`, los valores `y` y los parámetros del modelo:
 
 ```{r echo=T, eval = F}
-expon <- function(t, y, parametros){
+expon <- function(t, y, parms){
   
 }
 ```
@@ -121,4 +121,147 @@ las operaciones de que consiste el modelo, el exponencial:
 ```{r echo = T, eval = F}
 dN <- r * N
 ```
+
+## Función completa del modelo
+
+```{r echo=T}
+expon <- function(t, y, parms){
+  N <- y[1]
+  with(parametros,{
+    dN <- r * N
+    return(list(dN))
+  })
+}
+```
+
+los argumentos `t` y `parms` los veremos a continuación
+
+## Argumentos de la función
+
+`t` es una secuencia de valores del tiempo:
+
+```{r echo = T}
+t <- seq(0, 10, by = 0.1)
+```
+
+`y` es un objeto que sólo contiene las condiciones iniciales:
+
+```{r echo = T}
+y <- 10
+```
+
+`parms` es una lista que contiene los valores que cada parámetro:
+
+```{r echo = T}
+parametros <- list(r = 0.1)
+```
+
+## Llamando `deSolve` para correr simulación
+
+```{r echo = T}
+library(deSolve)
+
+sim <- lsoda(y = y, times = t, parms = parametros, func = expon)
+```
+
+`lsoda` es la función de `deSolve` que hará la simulación
+
+Los argumentos, ¿se explican solos?
+
+## Explorando la salida de `lsoda`
+
+Podemos imprimir las primeras filas
+
+```{r echo = T}
+head(sim)
+```
+
+## Explorando la salida de `lsoda`
+
+```{r echo=F, fig.height=4, fig.width=4}
+sim.df <- data.frame(sim)
+plot(t, sim.df$X1, xlab = "Tiempo", ylab = "N", main = "Simulación", col = "red", type = "l")
+```
+
+# Simulación de un modelo con más de un parámetro
+
+## Función del modelo de levins
+
+```{r echo = T}
+levins <- function(t, y, parms){
+  p <- y[1]
+  with(parms, {
+    dp <- c*p*(1-p) - e*p
+    return(list(dp))
+  })
+}
+```
+
+## `t`, `y`, `parms`
+
+```{r echo = T}
+t <- seq(0, 100, by = 0.1)
+y <- 0.1
+parms <- list(c = 0.5, e = 0.05)
+```
+
+## Simulando Levins
+
+```{r echo = T}
+sim.lev <- lsoda(y = y, times = t, 
+                 parms = parms,
+                 func = levins)
+head(sim.lev)
+```
+
+## Gráfica de las simulaciones
+
+```{r echo=F, fig.height=4, fig.width=4}
+sim.df <- data.frame(sim.lev)
+plot(t, sim.df$X1, xlab = "Tiempo", ylab = "p", main = "Simulación de Levins", col = "red", type = "l")
+```
+
+# Simulación de un modelo con dos variables de estado
+
+## El modelo
+
+\begin{align}
+    \frac{N_1}{dt} &= r N_1 (1-N_1/K) + i N_2-e N_1 \\
+    \frac{N_2}{dt} &= r N_2 (1-N_2/K) + i N_1-e N_2
+\end{align}
+
+## La función
+
+```{r echo = T}
+mig <- function(t, y, parms){
+  with(parms, {
+      N1 <- y[1]
+      N2 <- y[2]
+  
+    dN1 <- r * N1 * (1 - N1/K) + m2 * N2 - m1 * N1
+    dN2 <- r * N2 * (1 - N2/K) + m1 * N1 - m2 * N2
+    
+    return(list(dN1, dN2))
+  })
+}
+```
+
+## `t`, `y`, `parms`
+
+```{r echo = T}
+t <- seq(0, 10, by = 0.1)
+y <- c(N1 = 10, N2 = 0)
+parms <- list(r = 0.5, K = 25,
+              m1 = 0.1, m2 = 0.2)
+```
+
+## La simulación
+
+```{r echo = T}
+sim.mig <- lsoda(y = y, times = t, 
+                 parms = parms,
+                 func = mig)
+head(sim.mig)
+```
+
 

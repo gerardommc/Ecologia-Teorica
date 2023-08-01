@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.14)  28 JUL 2023 17:56
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.14)  31 JUL 2023 17:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1597,6 +1597,63 @@ LaTeX Font Info:    Font shape `TU/FiraMono(0)/b/n' will be
 (./deSolve.vrb) [10
 
 ]
+\openout4 = `deSolve.vrb'.
+
+(./deSolve.vrb) [11
+
+]
+\openout4 = `deSolve.vrb'.
+
+(./deSolve.vrb) [12
+
+]
+\openout4 = `deSolve.vrb'.
+
+(./deSolve.vrb) [13
+
+]
+\openout4 = `deSolve.vrb'.
+
+(./deSolve.vrb) [14
+
+]
+File: deSolve_files/figure-beamer/unnamed-chunk-15-1.pdf Graphic file (type pdf
+)
+<use deSolve_files/figure-beamer/unnamed-chunk-15-1.pdf>
+
+Overfull \vbox (31.69002pt too high) detected at line 433
+ []
+
+[15
+
+] [16
+
+]
+\openout4 = `deSolve.vrb'.
+
+(./deSolve.vrb) [17
+
+]
+\openout4 = `deSolve.vrb'.
+
+(./deSolve.vrb) [18
+
+]
+\openout4 = `deSolve.vrb'.
+
+(./deSolve.vrb) [19
+
+]
+File: deSolve_files/figure-beamer/unnamed-chunk-19-1.pdf Graphic file (type pdf
+)
+<use deSolve_files/figure-beamer/unnamed-chunk-19-1.pdf>
+
+Overfull \vbox (31.69002pt too high) detected at line 501
+ []
+
+[20
+
+]
 \tf@nav=\write6
 \openout6 = `deSolve.nav'.
 
@@ -1608,12 +1665,12 @@ LaTeX Font Info:    Font shape `TU/FiraMono(0)/b/n' will be
 
 (./deSolve.aux) ) 
 Here is how much of TeX's memory you used:
- 33670 strings out of 476191
- 706497 string characters out of 5812072
- 1119192 words of memory out of 5000000
- 53733 multiletter control sequences out of 15000+600000
+ 33751 strings out of 476191
+ 707899 string characters out of 5812072
+ 1120686 words of memory out of 5000000
+ 53798 multiletter control sequences out of 15000+600000
  473018 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,13n,171p,1808b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on deSolve.pdf (10 pages).
+Output written on deSolve.pdf (20 pages).

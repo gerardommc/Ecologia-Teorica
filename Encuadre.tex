@@ -1,0 +1,298 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{metropolis}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Encuadre},
+  pdfauthor={Gerardo Martín},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Encuadre}
+\subtitle{Ecología teórica}
+\author{Gerardo Martín}
+\date{28-07-2023}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{encuadre}{%
+\section{Encuadre}\label{encuadre}}
+
+\hypertarget{sobre-muxed}{%
+\subsection{Sobre mí}\label{sobre-muxed}}
+
+\begin{frame}{Sobre mí}
+\begin{itemize}
+\item
+  Gerardo Martín
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Veterinario por ULSA Bajío
+  \item
+    Maestro en Biología de Conservación por el INECOL A. C.
+  \item
+    Doctor en Salud Pública por James Cook University
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Posdoc en Imperial College London
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\hypertarget{por-quuxe9-un-veterinario-da-mme-i}{%
+\subsection{¿Por qué un veterinario da
+MME-I?}\label{por-quuxe9-un-veterinario-da-mme-i}}
+
+\begin{frame}{¿Por qué un veterinario da MME-I?}
+\begin{enumerate}
+\item
+  Ivestigación cuantitativa
+
+  1.1. Estadística y Matemáticas 1.2. Problemas en salud pública que
+  involucran a la ecología
+\item
+  Las matemáticas que uso son más o menos sencillas
+
+  2.1. Simular transmissión de enfermedades 2.2. Probar hipótesis sobre
+  mecanismos de transmisión (directa vs indirecta)
+\end{enumerate}
+
+Más info en mi sitio personal (aún en construcción!):
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://gerardommc.gihub.io}{gerardommc.github.io}
+\end{itemize}
+\end{frame}
+
+\hypertarget{sobre-ustedes}{%
+\subsection{Sobre ustedes}\label{sobre-ustedes}}
+
+\begin{frame}{Sobre ustedes}
+\begin{enumerate}
+\tightlist
+\item
+  ¿Qué esperan de la asignatura?
+\item
+  ¿Cómo puedo ayudar a desarrollar sus intereses particulares desde la
+  Ecología Teórica?
+\item
+  ¿Necesitan apoyo con equipo de cómputo?
+\item
+  ¿Necesitan revisión de cuestiones matemáticas?
+\end{enumerate}
+\end{frame}
+
+\hypertarget{sobre-la-materia}{%
+\section{Sobre la materia}\label{sobre-la-materia}}
+
+\hypertarget{cuxf3mo-se-daruxe1n-las-clases}{%
+\subsection{¿Cómo se darán las
+clases?}\label{cuxf3mo-se-daruxe1n-las-clases}}
+
+\begin{frame}{¿Cómo se darán las clases?}
+\begin{enumerate}
+\tightlist
+\item
+  Todos los contenidos del curso estarán en el sitio:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://gerardommc.github.io/Ecologia-Teorica/}{gerardommc.github.io/Ecologia-Teorica/}
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item
+  Clases estarán basadas en el sitio
+
+  3.1. Google Classroom
+\end{enumerate}
+\end{frame}
+
+\hypertarget{reglas}{%
+\subsection{Reglas}\label{reglas}}
+
+\begin{frame}{Reglas}
+\begin{enumerate}
+\item
+  Hacer muchas preguntas
+\item
+  Decirme si paso algo por alto
+\item
+  Paciencia en ambas direcciones
+\end{enumerate}
+\end{frame}
+
+\hypertarget{criterios-de-evaluaciuxf3n}{%
+\subsection{Criterios de evaluación}\label{criterios-de-evaluaciuxf3n}}
+
+\begin{frame}{Criterios de evaluación}
+\begin{enumerate}
+\tightlist
+\item
+  \emph{Asistencia} (25\%)
+\item
+  Trabajos de clase (50\%)
+\item
+  Examen (25\%)
+\item
+  Participación (2 puntos extra máximo) 4.1. En sesiones sincrónicas
+  4.2. Preguntas por email en Classroom
+\end{enumerate}
+\end{frame}
+
+\hypertarget{sobre-la-asistencia}{%
+\subsection{\texorpdfstring{Sobre la
+\emph{asistencia}}{Sobre la asistencia}}\label{sobre-la-asistencia}}
+
+\begin{frame}{Sobre la \emph{asistencia}}
+\begin{itemize}
+\tightlist
+\item
+  No se califica presencia en salón de clases
+\item
+  Sí el cumplimiento de trabajos
+\end{itemize}
+\end{frame}
+
+\hypertarget{sobre-el-curso}{%
+\section{Sobre el curso}\label{sobre-el-curso}}
+
+\hypertarget{quiuxe9nes-lo-impartiremos}{%
+\subsection{¿Quiénes lo
+impartiremos?}\label{quiuxe9nes-lo-impartiremos}}
+
+\begin{frame}{¿Quiénes lo impartiremos?}
+\begin{enumerate}
+\item
+  Yo (Meta, Bio, Epi)
+\item
+  Brenda Solórzano (Mol, Mod Gen)
+\item
+  Jaime Zaldívar (Plag, Int)
+\item
+  Carlos Yáñez (Inv)
+\item
+  Jorge Lopez Rocha (Pesca, caza)
+\end{enumerate}
+\end{frame}
+
+\hypertarget{calificaciuxf3n-final}{%
+\subsection{Calificación final}\label{calificaciuxf3n-final}}
+
+\begin{frame}{Calificación final}
+Promedio ponderado por tiempo de participación de cada profesor/a
+\end{frame}
+
+\hypertarget{contacto}{%
+\subsection{Contacto}\label{contacto}}
+
+\begin{frame}{Contacto}
+\begin{itemize}
+\tightlist
+\item
+  E-mail:
+  \href{mailto:gerardo.mmc@enesmerida.unam.mx}{\nolinkurl{gerardo.mmc@enesmerida.unam.mx}}
+\item
+  Sitio web personal:
+  \href{https://gerardommc.github.com}{gerardommc.github.io}
+\end{itemize}
+\end{frame}
+
+\end{document}

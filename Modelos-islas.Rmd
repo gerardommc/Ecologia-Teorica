@@ -21,9 +21,76 @@ knitr::opts_chunk$set(dev = 'pdf')
 
 ## Intro
 
+- Biogeografía es el estudio del efecto de la geografía en la diversidad biológica
+
+    - Analizaremos el caso especial de las islas
+    
+    - Isla puede ser porción de tierra rodeada de agua, fragmento de bosque rodeado de cultivo, un árbol separado de otros...
+
 - Modelos de metapoblaciones $\rightarrow$ parches ocupados por poblaciones por una sola especie
 
 - Modelos de islas $\rightarrow$ parches ocupados por varias especies
+
+## Esquema del proceso
+
+```{r echo = F, fig.align='center', fig.width=4, fig.height=4}
+knitr::include_graphics("Biogeografia/Islas.png", auto_pdf = T, dpi = 300)
+```
+
+## Alternativas técnicas
+
+1. Representar movimiento de individuos desde continente
+
+    1. Analizar frecuencia de llegada a las islas
+
+2. Ignorar individuos $\rightarrow$ representar número de especies como población
+
+    1. Mac Arthur y Wilson 1967
+    
+## El modelo de Mac Arthur y Wilson
+
+1. Número de especies $\rightarrow$ balance entre colonización y extinción
+
+2. $\forall$ spp tienen misma prob de llegar a isla
+
+3. Sólo cuentan las colonizaciones, llegada de spp nuevas
+
+4. Probabilidad de extinción es constante 
+
+5. Probabilidad de extinción de cualquier especie aumenta con el número de especies en isla
+
+## El modelo de Mac Arthur y Wilson (1967)
+
+```{r echo = F, fig.align='center', fig.cap="Relaciones cuantitativas entre inmigración, extinción, especies presentes y posibles.", fig.width=4, fig.height=4}
+knitr::include_graphics("Biogeografia/MacArthur.png", auto_pdf = F, dpi = 300)
+```
+## Donde ...
+
+\begin{align}
+I &= I_x - (I_x/P)R \\
+E &= (E_x/P)R
+\end{align}
+
+- $I =$ inmigración
+
+- $E =$ extinción
+
+- $P =$ número de especies que pueden colonizar la isla
+
+- $R =$ número de especies que habitan la isla
+
+## ...
+
+- $I_x$ es la tasa máxima de colonización
+
+- $E_x$ es la tasa máxima de extinción
+
+Por lo tanto el modelo completo es:
+
+$$R_{t+1} = R_t + I_x - (I_x/P)R_t - (E_x/P)R_t$$
+## Características del modelo de Mac Arthur y Wilson
+
+Tiempo discreto
 
 ## Los métodos
 

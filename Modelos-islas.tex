@@ -146,11 +146,130 @@
 \begin{frame}{Intro}
 \begin{itemize}
 \item
+  Biogeografía es el estudio del efecto de la geografía en la diversidad
+  biológica
+
+  \begin{itemize}
+  \item
+    Analizaremos el caso especial de las islas
+  \item
+    Isla puede ser porción de tierra rodeada de agua, fragmento de
+    bosque rodeado de cultivo, un árbol separado de otros\ldots{}
+  \end{itemize}
+\item
   Modelos de metapoblaciones \(\rightarrow\) parches ocupados por
   poblaciones por una sola especie
 \item
   Modelos de islas \(\rightarrow\) parches ocupados por varias especies
 \end{itemize}
+\end{frame}
+
+\hypertarget{esquema-del-proceso}{%
+\subsection{Esquema del proceso}\label{esquema-del-proceso}}
+
+\begin{frame}{Esquema del proceso}
+\begin{center}\includegraphics[width=2.51in]{Biogeografia/Islas} \end{center}
+\end{frame}
+
+\hypertarget{alternativas-tuxe9cnicas}{%
+\subsection{Alternativas técnicas}\label{alternativas-tuxe9cnicas}}
+
+\begin{frame}{Alternativas técnicas}
+\begin{enumerate}
+\item
+  Representar movimiento de individuos desde continente
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    Analizar frecuencia de llegada a las islas
+  \end{enumerate}
+\item
+  Ignorar individuos \(\rightarrow\) representar número de especies como
+  población
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    Mac Arthur y Wilson 1967
+  \end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\hypertarget{el-modelo-de-mac-arthur-y-wilson}{%
+\subsection{El modelo de Mac Arthur y
+Wilson}\label{el-modelo-de-mac-arthur-y-wilson}}
+
+\begin{frame}{El modelo de Mac Arthur y Wilson}
+\begin{enumerate}
+\item
+  Número de especies \(\rightarrow\) balance entre colonización y
+  extinción
+\item
+  \(\forall\) spp tienen misma prob de llegar a isla
+\item
+  Sólo cuentan las colonizaciones, llegada de spp nuevas
+\item
+  Probabilidad de extinción es constante
+\item
+  Probabilidad de extinción de cualquier especie aumenta con el número
+  de especies en isla
+\end{enumerate}
+\end{frame}
+
+\hypertarget{el-modelo-de-mac-arthur-y-wilson-1967}{%
+\subsection{El modelo de Mac Arthur y Wilson
+(1967)}\label{el-modelo-de-mac-arthur-y-wilson-1967}}
+
+\begin{frame}{El modelo de Mac Arthur y Wilson (1967)}
+\begin{figure}
+
+{\centering \includegraphics[width=4.73in]{Biogeografia/MacArthur} 
+
+}
+
+\caption{Relaciones cuantitativas entre inmigración, extinción, especies presentes y posibles.}\label{fig:unnamed-chunk-2}
+\end{figure}
+\end{frame}
+
+\hypertarget{donde}{%
+\subsection{Donde \ldots{}}\label{donde}}
+
+\begin{frame}{Donde \ldots{}}
+\begin{align}
+I &= I_x - (I_x/P)R \\
+E &= (E_x/P)R
+\end{align}
+
+\begin{itemize}
+\item
+  \(I =\) inmigración
+\item
+  \(E =\) extinción
+\item
+  \(P =\) número de especies que pueden colonizar la isla
+\item
+  \(R =\) número de especies que habitan la isla
+\end{itemize}
+\end{frame}
+
+\hypertarget{section}{%
+\subsection{\ldots{}}\label{section}}
+
+\begin{frame}{\ldots{}}
+\begin{itemize}
+\item
+  \(I_x\) es la tasa máxima de colonización
+\item
+  \(E_x\) es la tasa máxima de extinción
+\end{itemize}
+
+Por lo tanto el modelo completo es:
+
+\[R_{t+1} = R_t + I_x - (I_x/P)R_t - (E_x/P)R_t\] \#\# Características
+del modelo de Mac Arthur y Wilson
+
+Tiempo discreto
 \end{frame}
 
 \hypertarget{los-muxe9todos}{%
@@ -182,7 +301,7 @@ coordenadas}\label{creando-la-matriz-de-coordenadas}}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{Modelos-islas_files/figure-beamer/unnamed-chunk-1-1} \end{center}
+\begin{center}\includegraphics{Modelos-islas_files/figure-beamer/unnamed-chunk-3-1} \end{center}
 \end{frame}
 
 \hypertarget{matriz-de-adyacencias}{%

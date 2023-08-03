@@ -1,0 +1,113 @@
+---
+title: "Encuadre" 
+subtitle: "Ecología teórica"
+author: "Gerardo Martín"
+fontsize: 11pt
+output: 
+  beamer_presentation:
+    theme: metropolis
+    highlight: pygments
+    slide_level: 3
+    fig_height: 6
+    fig_caption: true
+    latex_engine: xelatex
+    keep_tex: true
+date: '28-07-2023'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Encuadre
+
+## Sobre mí
+
+- Gerardo Martín
+    
+    - Veterinario por ULSA Bajío
+    - Maestro en Biología de Conservación por el INECOL A. C.
+    - Doctor en Salud Pública por James Cook University
+        - Posdoc en Imperial College London
+        
+## ¿Por qué un veterinario da MME-I?
+
+1. Ivestigación cuantitativa
+
+    1.1. Estadística y Matemáticas
+    1.2. Problemas en salud pública que involucran a la ecología
+    
+2. Las matemáticas que uso son más o menos sencillas
+
+    2.1. Simular transmissión de enfermedades
+    2.2. Probar hipótesis sobre mecanismos de transmisión (directa vs indirecta)
+    
+Más info en mi sitio personal (aún en construcción!):
+
+- [gerardommc.github.io](https://gerardommc.gihub.io)
+    
+## Sobre ustedes
+
+1. ¿Qué esperan de la asignatura?
+2. ¿Cómo puedo ayudar a desarrollar sus intereses particulares desde la Ecología Teórica?
+3. ¿Necesitan apoyo con equipo de cómputo?
+4. ¿Necesitan revisión de cuestiones matemáticas?
+
+# Sobre la materia
+
+## ¿Cómo se darán las clases?
+
+1. Todos los contenidos del curso estarán en el sitio:
+
+- [gerardommc.github.io/Ecologia-Teorica/](https://gerardommc.github.io/Ecologia-Teorica/)
+
+3. Clases estarán basadas en el sitio
+    
+    3.1. Google Classroom
+
+## Reglas 
+
+1. Hacer muchas preguntas
+
+2. Decirme si paso algo por alto
+
+3. Paciencia en ambas direcciones
+
+## Criterios de evaluación
+
+1. *Asistencia* (25%)
+2. Trabajos de clase (50%)
+3. Examen (25%)
+4. Participación (2 puntos extra máximo)
+    4.1. En sesiones sincrónicas
+    4.2. Preguntas por email en Classroom
+
+## Sobre la *asistencia*
+
+- No se califica presencia en salón de clases
+- Sí el cumplimiento de trabajos
+
+# Sobre el curso
+
+## ¿Quiénes lo impartiremos?
+
+1. Yo (Meta, Bio, Epi)
+
+2. Brenda Solórzano (Mol, Mod Gen)
+
+3. Jaime Zaldívar (Plag, Int)
+
+4. Carlos Yáñez (Inv)
+
+5. Jorge Lopez Rocha (Pesca, caza)
+
+## Calificación final
+
+Promedio ponderado por tiempo de participación de cada profesor/a
+
+## Contacto
+
+- E-mail: [gerardo.mmc@enesmerida.unam.mx](mailto:gerardo.mmc@enesmerida.unam.mx)
+- Sitio web personal: [gerardommc.github.io](https://gerardommc.github.com)
+
+

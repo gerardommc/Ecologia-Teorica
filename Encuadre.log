@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.6)  2 AUG 2023 17:15
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.14)  7 AUG 2023 10:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1540,18 +1540,21 @@ LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/n' will be
 
 ] [6
 
-] [7
+]
+LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/n' will be
+(Font)              scaled to size 9.22536pt on input line 206.
+[7
 
 ] [8
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/it' will be
-(Font)              scaled to size 9.29602pt on input line 238.
+(Font)              scaled to size 9.29602pt on input line 240.
 [9
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/it' will be
-(Font)              scaled to size 10.10999pt on input line 252.
+(Font)              scaled to size 10.10999pt on input line 253.
 [10
 
 ] [11
@@ -1561,6 +1564,10 @@ LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/it' will be
 ] [13
 
 ] [14
+
+] [15
+
+] [16
 
 ]
 \tf@nav=\write5
@@ -1574,12 +1581,12 @@ LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/it' will be
 
 (./Encuadre.aux) ) 
 Here is how much of TeX's memory you used:
- 33215 strings out of 476191
- 699146 string characters out of 5812073
- 1110641 words of memory out of 5000000
- 53303 multiletter control sequences out of 15000+600000
- 472986 words of font info for 84 fonts, out of 8000000 for 9000
+ 33228 strings out of 476191
+ 699353 string characters out of 5812072
+ 1111754 words of memory out of 5000000
+ 53315 multiletter control sequences out of 15000+600000
+ 472994 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,13n,171p,1809b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Encuadre.pdf (14 pages).
+Output written on Encuadre.pdf (16 pages).

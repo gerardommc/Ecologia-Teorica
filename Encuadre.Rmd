@@ -63,7 +63,7 @@ Más info en mi sitio personal (aún en construcción!):
 
 3. Clases estarán basadas en el sitio
     
-    3.1. Google Classroom
+    3.1. Iré compartiendo ligas por Google Classroom **fb5pn2x**
 
 ## Reglas 
 
@@ -76,15 +76,21 @@ Más info en mi sitio personal (aún en construcción!):
 ## Criterios de evaluación
 
 1. *Asistencia* (25%)
+
 2. Trabajos de clase (50%)
+
 3. Examen (25%)
+
 4. Participación (2 puntos extra máximo)
+
     4.1. En sesiones sincrónicas
+    
     4.2. Preguntas por email en Classroom
 
 ## Sobre la *asistencia*
 
 - No se califica presencia en salón de clases
+
 - Sí el cumplimiento de trabajos
 
 # Sobre el curso
@@ -101,6 +107,38 @@ Más info en mi sitio personal (aún en construcción!):
 
 5. Jorge Lopez Rocha (Pesca, caza)
 
+## ¿Qué vamos a aprender?
+
+Mis secciones del curso
+
+1. Revisar qué es la teoría ecológica
+
+    - Hablar de su historia
+    
+2. En qué consisten las metapoblaciones
+
+    - Cómo se les representa matemáticamente
+    
+    - Revisar una serie de modelos que representan diferentes mecanismos de dinámica metapoblacional
+    
+## ¿Qué vamos a aprender?
+    
+3. Diferencias entre metapoblaciones y biogeografía de islas
+
+    - Revisar modelos básicos de Biogeografía de islas
+    
+4. Aprender métodos para simular metapoblaciones y dinámicas de la diversidad en islas
+
+    - Análisis
+    
+    - Simulación numérica en R
+    
+5. Epidemias:
+
+    - Representación matemática de eventos de transmisión de patógenos
+    
+    - Revisión de modelos básicos y mecanismos de transmisión
+    
 ## Calificación final
 
 Promedio ponderado por tiempo de participación de cada profesor/a
@@ -108,6 +146,11 @@ Promedio ponderado por tiempo de participación de cada profesor/a
 ## Contacto
 
 - E-mail: [gerardo.mmc@enesmerida.unam.mx](mailto:gerardo.mmc@enesmerida.unam.mx)
+
 - Sitio web personal: [gerardommc.github.io](https://gerardommc.github.com)
+
+- Classroom del curso: [**fb5pn2x**](https://classroom.google.com/c/NjE3NDQ4Njg5NDgz?cjc=fb5pn2x)
+
+- [Sitio del curso](https://gerardommc.github.io/Ecologia-Teorica/)
 
 

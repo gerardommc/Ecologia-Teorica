@@ -116,6 +116,26 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -168,7 +188,7 @@
 \subsection{Esquema del proceso}\label{esquema-del-proceso}}
 
 \begin{frame}{Esquema del proceso}
-\begin{center}\includegraphics[width=2.51in]{Biogeografia/Islas} \end{center}
+\begin{center}\includegraphics{Biogeografia/Islas} \end{center}
 \end{frame}
 
 \hypertarget{alternativas-tuxe9cnicas}{%
@@ -224,7 +244,7 @@ Wilson}\label{el-modelo-de-mac-arthur-y-wilson}}
 \begin{frame}{El modelo de Mac Arthur y Wilson (1967)}
 \begin{figure}
 
-{\centering \includegraphics[width=4.73in]{Biogeografia/MacArthur} 
+{\centering \includegraphics{Biogeografia/MacArthur} 
 
 }
 
@@ -266,49 +286,186 @@ E &= (E_x/P)R
 
 Por lo tanto el modelo completo es:
 
-\[R_{t+1} = R_t + I_x - (I_x/P)R_t - (E_x/P)R_t\] \#\# Características
-del modelo de Mac Arthur y Wilson
-
-Tiempo discreto
+\[R_{t+1} = R_t + I_x - (I_x/P)R_t - (E_x/P)R_t\]
 \end{frame}
 
-\hypertarget{los-muxe9todos}{%
-\subsection{Los métodos}\label{los-muxe9todos}}
+\hypertarget{caracteruxedsticas-del-modelo-de-mac-arthur-y-wilson}{%
+\subsection{Características del modelo de Mac Arthur y
+Wilson}\label{caracteruxedsticas-del-modelo-de-mac-arthur-y-wilson}}
 
-\begin{frame}{Los métodos}
+\begin{frame}{Características del modelo de Mac Arthur y Wilson}
 \begin{itemize}
 \item
-  Crearemos un conjunto de parches de hábitat
+  Tiempo discreto
 \item
-  Parches estarán conectados con parches adyacentes
+  Inmigración disminuye si hay pocas especies en \(P\)
 \item
-  Conjunto de parches: matriz de coordenadas geográficas
-\item
-  Conexiones entre parches: matriz que indica pares de parches
-  conectados
+  Extinción aumenta si hay pocas especies en \(P\)
 \end{itemize}
 \end{frame}
 
-\hypertarget{creando-la-matriz-de-coordenadas}{%
-\subsection{Creando la matriz de
-coordenadas}\label{creando-la-matriz-de-coordenadas}}
+\hypertarget{ejemplo-del-modelo-resuelto}{%
+\subsection{Ejemplo del modelo
+resuelto}\label{ejemplo-del-modelo-resuelto}}
 
-\begin{frame}[fragile]{Creando la matriz de coordenadas}
+\begin{frame}[fragile]{Ejemplo del modelo resuelto}
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{parches }\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{y =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{)}
-\FunctionTok{plot}\NormalTok{(parches}\SpecialCharTok{$}\NormalTok{x, parches}\SpecialCharTok{$}\NormalTok{y)}
+\NormalTok{R }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\DecValTok{100}\NormalTok{); R[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{10}
+\NormalTok{Ix }\OtherTok{\textless{}{-}} \DecValTok{1}\NormalTok{; Ex }\OtherTok{\textless{}{-}} \FloatTok{0.5}\NormalTok{; P }\OtherTok{\textless{}{-}} \DecValTok{20}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(R))\{}
+\NormalTok{  R[i] }\OtherTok{\textless{}{-}}\NormalTok{ R[i}\DecValTok{{-}1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ Ix }\SpecialCharTok{{-}}\NormalTok{ (Ix}\SpecialCharTok{/}\NormalTok{P)}\SpecialCharTok{*}\NormalTok{R[i}\DecValTok{{-}1}\NormalTok{] }\SpecialCharTok{{-}}\NormalTok{ Ex}\SpecialCharTok{/}\NormalTok{P}\SpecialCharTok{*}\NormalTok{R[i}\DecValTok{{-}1}\NormalTok{]}
+\NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{center}\includegraphics{Modelos-islas_files/figure-beamer/unnamed-chunk-3-1} \end{center}
 \end{frame}
 
-\hypertarget{matriz-de-adyacencias}{%
-\subsection{Matriz de adyacencias}\label{matriz-de-adyacencias}}
+\hypertarget{ejemplo-del-modelo-resuelto-1}{%
+\subsection{Ejemplo del modelo
+resuelto}\label{ejemplo-del-modelo-resuelto-1}}
 
-\begin{frame}{Matriz de adyacencias}
-Ponemos esto y lo otro\ldots{}
+\begin{frame}{Ejemplo del modelo resuelto}
+\includegraphics{Modelos-islas_files/figure-beamer/unnamed-chunk-4-1.pdf}
+\end{frame}
+
+\hypertarget{ejercicio}{%
+\subsection{Ejercicio}\label{ejercicio}}
+
+\begin{frame}{Ejercicio}
+\begin{itemize}
+\tightlist
+\item
+  Repetir la simulación con las siguientes combinaciones de parámetros
+\end{itemize}
+
+\begin{longtable}[]{@{}rrr@{}}
+\toprule\noalign{}
+Ix & Ex & P \\
+\midrule\noalign{}
+\endhead
+0.75 & 0.75 & 20 \\
+1.50 & 0.75 & 20 \\
+0.75 & 1.25 & 20 \\
+1.50 & 1.25 & 20 \\
+0.75 & 0.75 & 40 \\
+1.50 & 0.75 & 40 \\
+0.75 & 1.25 & 40 \\
+1.50 & 1.25 & 40 \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\hypertarget{ejercicio-1}{%
+\subsection{Ejercicio}\label{ejercicio-1}}
+
+\begin{frame}{Ejercicio}
+\begin{itemize}
+\item
+  ¿Qué pasa con el punto de equilibio cuando hay más especies en \(P\)?
+\item
+  ¿Cómo afectan \(I_x\) y \(E_x\) al número de especies en el conjunto
+  de islas?
+\end{itemize}
+\end{frame}
+
+\hypertarget{relaciuxf3n-entre-uxe1rea-distancia-y-especies}{%
+\section{Relación entre área, distancia y
+especies}\label{relaciuxf3n-entre-uxe1rea-distancia-y-especies}}
+
+\hypertarget{concepto}{%
+\subsection{Concepto}\label{concepto}}
+
+\begin{frame}{Concepto}
+\begin{itemize}
+\item
+  No.~spp disminuye con distancia de tierra
+\item
+  No.~spp aumenta con tamaño de isla
+\item
+  Se ha propuesto:
+\end{itemize}
+
+\[S = cA^z\]
+
+\(S\) es el número de especies, \(c\) es una constante de grupo
+taxonómico, \(z\) exponente sin dimensión
+\end{frame}
+
+\hypertarget{interpretaciuxf3n-de-paruxe1metros}{%
+\subsection{Interpretación de
+parámetros}\label{interpretaciuxf3n-de-paruxe1metros}}
+
+\begin{frame}{Interpretación de parámetros}
+\begin{itemize}
+\item
+  \(z \rightarrow\) tiene valores típicos de \(0.2-0.3\)
+\item
+  Indica que si área aumenta 10x número de especies aumenta 2x
+\end{itemize}
+\end{frame}
+
+\hypertarget{evidencia}{%
+\subsection{Evidencia}\label{evidencia}}
+
+\begin{frame}{Evidencia}
+\includegraphics{Biogeografia/Spp-area.png}
+\end{frame}
+
+\hypertarget{mecanismos-bioluxf3gicos}{%
+\subsection{Mecanismos biológicos}\label{mecanismos-bioluxf3gicos}}
+
+\begin{frame}{Mecanismos biológicos}
+\begin{enumerate}
+\item
+  Más especies pueden explotar nichos si el área es mayor
+\item
+  Áreas menores pueden albergar poblaciones más pequeñas
+\item
+  Extinciones pueden ocurrir por:
+
+  \begin{itemize}
+  \item
+    Estocasticidad ambiental
+  \item
+    Emigración
+  \item
+    E\ldots?
+  \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\hypertarget{supuestos}{%
+\subsection{Supuestos}\label{supuestos}}
+
+\begin{frame}{Supuestos}
+\begin{enumerate}
+\item
+  La identidad de especies no importa
+\item
+  Todos los grupos taxonómicos se asumen igualmente probables
+
+  \begin{itemize}
+  \item
+    Colonización
+  \item
+    Extinción
+  \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\hypertarget{interacciuxf3n-entre-uxe1rea-y-distancia}{%
+\subsection{Interacción entre área y
+distancia}\label{interacciuxf3n-entre-uxe1rea-y-distancia}}
+
+\begin{frame}{Interacción entre área y distancia}
+\includegraphics{Biogeografia/Distancia.Area.png}
+\end{frame}
+
+\hypertarget{supuestos-1}{%
+\subsection{Supuestos}\label{supuestos-1}}
+
+\begin{frame}{Supuestos}
+\(A\) (área) es equivalente a \(N\) (número de especies)
 \end{frame}
 
 \end{document}

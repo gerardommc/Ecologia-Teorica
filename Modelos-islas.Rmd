@@ -88,27 +88,102 @@ E &= (E_x/P)R
 Por lo tanto el modelo completo es:
 
 $$R_{t+1} = R_t + I_x - (I_x/P)R_t - (E_x/P)R_t$$
+
 ## Características del modelo de Mac Arthur y Wilson
 
-Tiempo discreto
+- Tiempo discreto
 
-## Los métodos
+- Inmigración disminuye si hay pocas especies en $P$
 
-- Crearemos un conjunto de parches de hábitat
+- Extinción aumenta si hay pocas especies en $P$
 
-- Parches estarán conectados con parches adyacentes
+## Ejemplo del modelo resuelto
 
-- Conjunto de parches: matriz de coordenadas geográficas
-
-- Conexiones entre parches: matriz que indica pares de parches conectados
-
-## Creando la matriz de coordenadas
-
-```{r echo=T, fig.height=3, fig.width=3, fig.align='center'}
-parches <- expand.grid(x = 1:4, y = 1:4)
-plot(parches$x, parches$y)
+```{r echo = T}
+R <- numeric(100); R[1] <- 10
+Ix <- 1; Ex <- 0.5; P <- 20
+for(i in 2:length(R)){
+  R[i] <- R[i-1] + Ix - (Ix/P)*R[i-1] - Ex/P*R[i-1]
+}
 ```
 
-## Matriz de adyacencias
+## Ejemplo del modelo resuelto
 
-Ponemos esto y lo otro...
+```{r echo=F, fig.height=4, fig.width=4}
+plot(1:length(R), R, type = "l", col = "red", xlab = "Tiempo", ylab = "No. de especies")
+```
+
+## Ejercicio
+
+- Repetir la simulación con las siguientes combinaciones de parámetros
+
+```{r echo=F}
+df <- expand.grid(Ix = c(0.75, 1.5), Ex = c(0.75, 1.25), P = c(20, 40))
+knitr::kable(df)
+```
+
+## Ejercicio
+
+- ¿Qué pasa con el punto de equilibio cuando hay más especies en $P$?
+
+- ¿Cómo afectan $I_x$ y $E_x$ al número de especies en el conjunto de islas?
+
+# Relación entre área, distancia y especies
+
+## Concepto
+
+- No. spp disminuye con distancia de tierra
+
+- No. spp aumenta con tamaño de isla
+
+- Se ha propuesto:
+
+$$S = cA^z$$
+
+$S$ es el número de especies, $c$ es una constante de grupo taxonómico, $z$ exponente sin dimensión
+
+## Interpretación de parámetros
+
+- $z \rightarrow$ tiene valores típicos de $0.2-0.3$
+
+- Indica que si área aumenta 10x número de especies aumenta 2x
+
+## Evidencia
+
+```{r echo = F}
+knitr::include_graphics("Biogeografia/Spp-area.png", dpi = 300)
+```
+
+## Mecanismos biológicos
+
+1. Más especies pueden explotar nichos si el área es mayor
+
+2. Áreas menores pueden albergar poblaciones más pequeñas
+
+2. Extinciones pueden ocurrir por:
+
+    - Estocasticidad ambiental
+    
+    - Emigración
+    
+    - E...?
+    
+## Supuestos
+
+1. La identidad de especies no importa
+
+2. Todos los grupos taxonómicos se asumen igualmente probables
+
+    - Colonización
+    
+    - Extinción
+
+## Interacción entre área y distancia
+
+```{r echo = F}
+knitr::include_graphics("Biogeografia/Distancia.Area.png", dpi = 300)
+```
+
+## Supuestos
+
+$A$ (área) es equivalente a $N$ (número de especies)

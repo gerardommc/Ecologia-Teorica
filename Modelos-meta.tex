@@ -352,9 +352,46 @@ Iteraciones de la integración
 \end{Shaded}
 \end{frame}
 
-\hypertarget{el-modelo-buxe1sico-de-metapoblaciones}{%
-\section{El modelo básico de
-metapoblaciones}\label{el-modelo-buxe1sico-de-metapoblaciones}}
+\hypertarget{modelos-buxe1sicos-de-metapoblaciones}{%
+\section{Modelos básicos de
+metapoblaciones}\label{modelos-buxe1sicos-de-metapoblaciones}}
+
+\hypertarget{el-concepto}{%
+\subsection{El concepto}\label{el-concepto}}
+
+\begin{frame}{El concepto}
+\begin{center}\includegraphics{Metapoblaciones/MEtap-May} \end{center}
+\end{frame}
+
+\hypertarget{el-concepto-1}{%
+\subsection{El concepto}\label{el-concepto-1}}
+
+\begin{frame}{El concepto}
+\begin{itemize}
+\item
+  Representar proporción de parches de hábitat con presencia de la
+  especie
+\item
+  Equilibrio entre colonizaciones y extinciones locales
+\item
+  Parches que emiten y parches que reciben individuos
+\end{itemize}
+\end{frame}
+
+\hypertarget{poblaciones-fuente-y-sumidero}{%
+\subsection{Poblaciones fuente y
+sumidero}\label{poblaciones-fuente-y-sumidero}}
+
+\begin{frame}{Poblaciones fuente y sumidero}
+\begin{figure}
+
+{\centering \includegraphics{Metapoblaciones/Fuente-sumidero} 
+
+}
+
+\caption{Poblaciones con r>0 son fuente. Poblaciones con r<0 son sumideros, las cuales persisten gracias a la inmigración.}\label{fig:unnamed-chunk-5}
+\end{figure}
+\end{frame}
 
 \hypertarget{modelo-de-levins}{%
 \subsection{Modelo de Levins}\label{modelo-de-levins}}
@@ -414,7 +451,7 @@ metapoblaciones}\label{el-modelo-buxe1sico-de-metapoblaciones}}
 \subsection{Integración}\label{integraciuxf3n-1}}
 
 \begin{frame}{Integración}
-\includegraphics{Modelos-meta_files/figure-beamer/unnamed-chunk-5-1.pdf}
+\includegraphics{Modelos-meta_files/figure-beamer/unnamed-chunk-7-1.pdf}
 \end{frame}
 
 \hypertarget{condiciones-de-estabilidad}{%
@@ -614,46 +651,6 @@ Modificación del modelo clásico (sin lluvia de propágulos ni rescate)
 \end{itemize}
 
 \[p^* = 1 - \frac{e}{c} - D\]
-\end{frame}
-
-\hypertarget{integraciuxf3n-con-paquete-desolve}{%
-\section{\texorpdfstring{Integración con paquete
-\texttt{deSolve}}{Integración con paquete deSolve}}\label{integraciuxf3n-con-paquete-desolve}}
-
-\hypertarget{necesidad-real}{%
-\subsection{Necesidad real}\label{necesidad-real}}
-
-\begin{frame}{Necesidad real}
-\begin{figure}
-\centering
-\includegraphics{Modelos-meta_files/figure-beamer/unnamed-chunk-6-1.pdf}
-\caption{Línea negra es la solución analítica. Roja es solución de
-Euler}
-\end{figure}
-\end{frame}
-
-\hypertarget{necesidad-real-1}{%
-\subsection{Necesidad real}\label{necesidad-real-1}}
-
-\begin{frame}[fragile]{Necesidad real}
-\begin{itemize}
-\item
-  El método de Euler es muy inexacto
-\item
-  El error de integración se acumula
-\item
-  Se puede controlar, disminuyendo \(h\), pero se vuelve leeento
-\item
-  Métodos como Runge-Kutta de 2 y 4 pasos tienen menos error
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Adams-Bashford son más sofisticados y rápidos
-  \end{itemize}
-\item
-  Están implementados en paquete \texttt{deSolve} de \textbf{R}
-\end{itemize}
 \end{frame}
 
 \end{document}

@@ -150,7 +150,27 @@ for(i in 2:length(N)){
   }
 ```
 
-# El modelo básico de metapoblaciones
+# Modelos básicos de metapoblaciones
+
+## El concepto
+
+```{r echo=F, fig.align='center', fig.height=4, fig.width=4}
+knitr::include_graphics("Metapoblaciones/MEtap-May.png", dpi = 300)
+```
+
+## El concepto
+
+- Representar proporción de parches de hábitat con presencia de la especie
+
+- Equilibrio entre colonizaciones y extinciones locales
+
+- Parches que emiten y parches que reciben individuos
+
+## Poblaciones fuente y sumidero
+
+```{r echo=F, fig.align='center', fig.cap="Poblaciones con r>0 son fuente. Poblaciones con r<0 son sumideros, las cuales persisten gracias a la inmigración.", fig.height=3, fig.width=5}
+knitr::include_graphics("Metapoblaciones/Fuente-sumidero.png", dpi = 300)
+```
 
 ## Modelo de Levins
 

@@ -22,9 +22,13 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participa
 
     - [Modelos de metapoblaciones](Modelos-meta.pdf)
     
+    - [Lectura](Metapoblaciones/Stevens-Metap.pdf)
+    
     - [Práctica de **R**](deSolve.pdf)
     
     - [Modelos de islas](Modelos-islas.pdf)
+    
+    - [Lectura](Biogeografia/Haefner-Biogeo.pdf)
     
     - [Simulación y análisis de modelos](Simulacion-meta.Rmd)
 

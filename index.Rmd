@@ -16,6 +16,8 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participa
     
 1. [Introducción a la Ecología Teórica](Historia.pdf)
 
+    - [Lectura](Imagenes intro/May-Intro.pdf)
+
 2. [Metapoblaciones y Biogeografía de Islas](Metapoblaciones.pdf)
 
     - [Modelos de metapoblaciones](Modelos-meta.pdf)

@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf) y [Calendario de participaciones](Calendario-EcoTeorica.xlsx)
+Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participaciones](Calendario-EcoTeorica.xlsx) y [Horario de clases](Horario.pdf)
     
 1. [Introducción a la Ecología Teórica](Historia.pdf)
 

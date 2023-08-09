@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.14)  7 AUG 2023 12:53
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.14)  7 AUG 2023 18:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1678,9 +1678,30 @@ File: Biogeografia/Spp-area.png Graphic file (type bmp)
 ]
 File: Biogeografia/Distancia.Area.png Graphic file (type bmp)
 <Biogeografia/Distancia.Area.png>
+LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/it' will be
+(Font)              scaled to size 8.48953pt on input line 466.
+
+Overfull \vbox (16.7876pt too high) detected at line 466
+ []
+
 [20
 
 ] [21
+
+]
+File: Biogeografia/Hubbell.png Graphic file (type bmp)
+<Biogeografia/Hubbell.png>
+
+Overfull \vbox (31.68565pt too high) detected at line 500
+ []
+
+[22
+
+] [23
+
+] [24
+
+] [25
 
 ]
 \tf@nav=\write6
@@ -1694,12 +1715,12 @@ File: Biogeografia/Distancia.Area.png Graphic file (type bmp)
 
 (./Modelos-islas.aux) ) 
 Here is how much of TeX's memory you used:
- 35335 strings out of 476191
- 738773 string characters out of 5812072
- 1148322 words of memory out of 5000000
- 55381 multiletter control sequences out of 15000+600000
- 472986 words of font info for 84 fonts, out of 8000000 for 9000
+ 35377 strings out of 476191
+ 739569 string characters out of 5812072
+ 1148565 words of memory out of 5000000
+ 55421 multiletter control sequences out of 15000+600000
+ 472994 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,13n,171p,1814b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Modelos-islas.pdf (21 pages).
+Output written on Modelos-islas.pdf (25 pages).

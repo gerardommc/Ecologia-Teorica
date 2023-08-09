@@ -1,0 +1,38 @@
+Diapositiva 1: Título de la presentación
+
+    Teoría básica de los modelos de transmisión de enfermedades
+
+Diapositiva 2: Introducción
+
+    Los modelos de transmisión de enfermedades son herramientas matemáticas que se utilizan para estudiar la propagación de enfermedades infecciosas en una población.
+    Pueden utilizarse para predecir el impacto de una nueva enfermedad, evaluar la eficacia de las intervenciones de salud pública y desarrollar estrategias para controlar la propagación de enfermedades.
+
+Diapositiva 3: Componentes de un modelo de transmisión de enfermedades
+
+    Los modelos de transmisión de enfermedades suelen tener los siguientes componentes:
+        Una población de individuos, cada uno con un estado de salud (susceptible, infectado o recuperado)
+        Un mecanismo de transmisión de la enfermedad, que puede ser por contacto directo, contacto indirecto o vectorial
+        Una tasa de transmisión, que es la probabilidad de que un individuo susceptible se infecte al entrar en contacto con un individuo infectado
+        Un período de incubación, que es el tiempo que transcurre entre la infección y el inicio de los síntomas
+        Una tasa de recuperación, que es la probabilidad de que un individuo infectado se recupere de la enfermedad
+
+Diapositiva 4: Tipos de modelos de transmisión de enfermedades
+
+    Hay muchos tipos diferentes de modelos de transmisión de enfermedades, pero los más comunes son:
+        Modelos estocásticos, que consideran la aleatoriedad en la transmisión de la enfermedad
+        Modelos determinísticos, que asumen que la transmisión de la enfermedad es predecible
+        Modelos individuales, que consideran los comportamientos individuales de los individuos
+        Modelos de población, que consideran la dinámica de la enfermedad a nivel de población
+
+Diapositiva 5: Aplicaciones de los modelos de transmisión de enfermedades
+
+    Los modelos de transmisión de enfermedades pueden utilizarse para:
+        Predecir el impacto de una nueva enfermedad
+        Evaluar la eficacia de las intervenciones de salud pública
+        Desarrollar estrategias para controlar la propagación de enfermedades
+        Informar las políticas de salud pública
+
+Diapositiva 6: Conclusión
+
+    Los modelos de transmisión de enfermedades son herramientas valiosas que pueden utilizarse para mejorar la comprensión de la propagación de las enfermedades infecciosas y para desarrollar estrategias para controlarlas.
+

@@ -126,7 +126,7 @@ knitr::kable(df)
 
 - ¿Qué pasa con el punto de equilibio cuando hay más especies en $P$?
 
-- ¿Cómo afectan $I_x$ y $E_x$ al número de especies en el conjunto de islas?
+- ¿Cómo afectan $I_x$ y $E_x$ al número de especies la isla?
 
 # Relación entre área, distancia y especies
 
@@ -180,10 +180,51 @@ knitr::include_graphics("Biogeografia/Spp-area.png", dpi = 300)
 
 ## Interacción entre área y distancia
 
-```{r echo = F}
+```{r echo = F, fig.cap="Si *A* (área) es equivalente a *N* (número de especies), entonces se produce la relación cuantitativa..."}
 knitr::include_graphics("Biogeografia/Distancia.Area.png", dpi = 300)
 ```
 
-## Supuestos
+## Tipo de modelo
 
-$A$ (área) es equivalente a $N$ (número de especies)
+- Fenomenológico
+
+    - No representa un mecanismo
+    
+- Estático
+
+    - No toma en cuenta el tiempo
+    
+- Hubbell
+
+## Teoría completa de relaciones especie-área
+
+```{r echo = F, fig.align='center'}
+knitr::include_graphics("Biogeografia/Hubbell.png", dpi = 500)
+```
+
+## Resumen de la teoría
+
+- Biológicamente controversial
+
+- Ignora mecanismos biológicos como evolución
+
+- Tiene alto poder explicativo
+
+    - Sóamente en islas
+    
+## Peero...
+
+```{r echo = F, fig.align='center'}
+knitr::kable("Biogeografia/Connolly.png", dpi = 300)
+```
+
+## En resumen
+
+- Geografía sí puede explicar parte de la variación
+
+- Biología de organismos y características del medio en que viven, pueden modificar relaciones teóricas (Dornelas et al. 2006)
+
+- No todo en ecología es estocástico (Hubbell 2001)
+
+
+

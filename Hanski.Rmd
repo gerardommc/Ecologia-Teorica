@@ -1,0 +1,119 @@
+---
+title: "Biogeografía de islas" 
+subtitle: "Función de incidencia de Hanski"
+author: "Gerardo Martín"
+fontsize: 11pt
+output: 
+  beamer_presentation:
+    theme: metropolis
+    highlight: pygments
+    slide_level: 3
+    fig_height: 6
+    fig_caption: true
+    latex_engine: xelatex
+    keep_tex: true
+date: '28-07-2023'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'pdf')
+```
+
+## Intro
+
+Modelos anteriores representan:
+
+  - Número de especies como función de:
+  
+      - Especies continentales
+      
+      - Riesgo de extinción
+      
+      - Probailidad de inmigración
+      
+  - Determinantes geográficos del número de especies
+  
+      - Áreas y Distancias
+      
+## Un marco para análisis de datos
+
+- Levins y MacArthur y Wilson ignoran características de islas
+
+- No permiten estimar efectos sobre número de especies 
+
+MacArthur y Wilson (1963): $\uparrow \mathrm{Area} \rightarrow \mathrm{Extinción} \downarrow$ 
+
+Hanski propuso modelo para relacionarlos
+
+## El modelo de incidencia de Hanski (1994)
+
+- Ocupación es función de colonización y extinción
+
+- Modelo representa probabilidad de transición:
+
+$$\mathrm{Vacío} \rightarrow \mathrm{Ocupado}$$
+
+- De modo que:
+
+\begin{align}
+\mathrm{Estado}_t &= \mathrm{Vacío} \\
+\mathrm{Estado}_{t+1} &= \mathrm{Ocupado}
+\end{align}
+
+## Esquema del fenómeno
+
+```{r echo=F, fig.height=4, fig.width=5, message = F, warning=F, fig.align='center'}
+library(diagram)
+C <- .3; E <- .5
+M <- matrix(c(1-C, E,
+              C, 1-E), ncol=2, byrow=TRUE)
+colnames(M) <- rownames(M) <- c("Vacío", "Ocupado")
+{
+  plotmat(M, pos=2) #requires the diagram package
+  title("Los dos estados posibles de un parche")
+}
+```
+
+## Parámetros
+
+- $C_i$ es la probabilidad de ser colonizado en período $t$
+
+- $E_i$ es la probabilidad de sufrir una extinción
+
+- $1-C_i$ es pa probabilidad de permanecer ocupado
+
+- $1 - E_i$ es la probabilidad de permanecer vacío
+
+## Probabilidad de que parche esté ocupado
+
+\begin{equation}
+J_i = \frac{C_i}{C_i + E_i}
+\end{equation}
+
+Si $C_i = 0.3$ y $E_i = 0.5$
+
+\begin{equation}
+J_i = \frac{0.3}{0.3 + 0.5} = 0.375
+\end{equation}
+
+## Matriz de transiciones
+
+```{r echo =F}
+knitr::kable(M, align = "l", caption = "Primera fila es la probabilidad asociada a *t*. Segunda fila a *t+1*.")
+```
+
+$J_i$ es la probabilidad a largo plazo de ocupación, por lo tanto el punto de equilibrio. La sitribución estable de los valores propios $\lambda$ es:
+
+```{r echo = F}
+eM <- eigen(M)
+eM$vectors[,1]/sum(eM$vectors[,1])
+```
+
+## Estimación de la probabilidad de extincion ($E_i$)
+
+- Se determina como función del Área ($A_i$)
+
+    - En áreas grandes $E_i$ es pequeño
+\begin{equation}
+x = 1
+\end{equation}

@@ -215,7 +215,7 @@ knitr::include_graphics("Biogeografia/Hubbell.png", dpi = 500)
 ## Peero...
 
 ```{r echo = F, fig.align='center'}
-knitr::kable("Biogeografia/Connolly.png", dpi = 300)
+knitr::include_graphics("Biogeografia/Connolly.png", dpi = 300)
 ```
 
 ## En resumen
@@ -225,6 +225,3 @@ knitr::kable("Biogeografia/Connolly.png", dpi = 300)
 - Biología de organismos y características del medio en que viven, pueden modificar relaciones teóricas (Dornelas et al. 2006)
 
 - No todo en ecología es estocástico (Hubbell 2001)
-
-
-

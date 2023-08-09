@@ -32,7 +32,7 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participa
     
     - [Simulación y análisis de modelos](Simulacion-meta.Rmd)
 
-3. [Epidemias](Epidemias.pdf)
+3. Epidemias
 
     - [Modelos de epidemias](Modelos-epi.pdf)
     

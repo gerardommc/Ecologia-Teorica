@@ -114,12 +114,12 @@ Inicio de rutina de integración:
 
 3. $N'(0) = 0.1 \times N(0) = 0.1 \times 10$
 
-4. $N(0.5) = 10 + 0.1 \times 10 \times 0.5 = 11.5$$
+4. $N(0.5) = 10 + 0.1 \times 10 \times 0.5 = 10.5$
 
 5. Pasos 2-4 se repiten:
 
-$$N(1) = N(0.5) + N'(0.5) \times h = 11.5 + 0.1\times 11.5 \times 0.5 = 12.075$$
-$$N(1.5) = N(1) + N'(1) \times h = 12.075 + 0.1\times 12.075 \times 0.5 = 12.67875$$
+$$N(1) = N(0.5) + N'(0.5) \times h = 10.5 + 0.1\times 10.5 \times 0.5 = 11.025$$
+$$N(1.5) = N(1) + N'(1) \times h = 11.025 + 0.1\times 11.025 \times 0.5 = 11.57625$$
 
 ## Solución para 10 pasos de tiempo
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.14)  7 AUG 2023 11:48
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.14)  10 AUG 2023 13:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1556,7 +1556,7 @@ ern Roman (RS)
 ] [9
 
 ]
-Overfull \hbox (9.42824pt too wide) detected at line 317
+Overfull \hbox (8.98833pt too wide) detected at line 317
 [][][][][][] [] [][][][] [] [][][][][] [] [] [] [][][][][][] [] [][][] [] [][][
 ][][][] [] [][][] [] [][][][][][][][]
  []

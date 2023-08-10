@@ -96,6 +96,15 @@ Si $C_i = 0.3$ y $E_i = 0.5$
 J_i = \frac{0.3}{0.3 + 0.5} = 0.375
 \end{equation}
 
+## Derivación de $J_i$
+
+Se parte del modelo de lluvia de propágulos (única fuente de especies es el continente):
+
+$$\frac{dp}{dt} = c(1-p) - ep$$
+Donde las condiciones de equilibio son:
+
+$$p^* = \frac{c}{c+e}$$
+
 ## Matriz de transiciones
 
 ```{r echo =F}
@@ -115,5 +124,88 @@ eM$vectors[,1]/sum(eM$vectors[,1])
 
     - En áreas grandes $E_i$ es pequeño
 \begin{equation}
-x = 1
+E_i = \left\{ \begin{aligned}
+\frac{e}{A^x} \mathrm{\ si\ } A_i > e^{1/x}\\
+1 \mathrm{\ si\ } A_i \leq e^{1/x}
+\end{aligned} \right.
 \end{equation}
+
+Donde $e$ es un parámetro a estimar (no es la cte de Euler).
+
+## Ejemplo del efecto del área sobre $E_i$
+
+```{r echo=F, fig.height=4, fig.width=4}
+# Extinction probability
+E.p <- function(A, e=0.01, X=1.009){
+  Ei <- ifelse(A > e^(1/X), e/(A^X), 1)
+  Ei }
+
+curve(E.p(x), 0, 0.2, ylim=c(0,1), col = "red")
+```
+
+## Probabilidad de colonización ($C_i$)
+
+- Es función de migrantes y distancia de tierra continental u otros parches:
+
+$$C_i = \frac{1}{1 + \left(\frac{y'}{S_i}\right)^2}$$
+
+$y'$ es la habilidad colonizadora de las especies
+
+$S_i$ es una de aislamiento del parche $i$
+
+## Fórmula para $S_i$
+
+$$S_i = \sum_{j = i}^{n} p_j \exp(- \alpha d_{ij}) A_j$$
+
+$n$ número total de parches $j$ que son hábitats de las especies migrantes
+
+$p_j$ es el estado de ocupación de cada parche
+
+$d_{ij}$ es la distancia lineal entre parche $i$ y el $j$
+
+$\alpha$ es el efecto de la distancia entre $i$ y $j$
+
+$A_j$ es el área de $j$ $\therefore$ índice de tamaño poblacional
+
+## Ejemplo del efecto de $d_{ij}$ y $A_j$
+
+```{r echo=F, fig.height=4, fig.width=4, fig.align='center'}
+# Colonization probability from one patch to another, as a function of distance
+C.p <- function(d, yprime, alpha, area){
+  Sij <- exp(-alpha*d ) * area
+  Ci <- 1/(1 + (yprime/Sij)^2 )
+  Ci
+}
+
+# parameters
+yprime <- 2.663; ha <- 0.94; alpha <- 2
+km <- seq(0, 1.5, by=0.01)
+C <- sapply(km, function(d) {C.p(d=d, yprime=yprime, alpha=alpha, area=ha)})
+plot(km, C, type="l", col = "red")
+```
+
+## Combinando $C_i$ y $E_i$ para obtener $J_i$
+
+\begin{equation}
+J_i = \frac{1}{1 + \left( 1 + \left[ \frac{y'}{S_i} \right]^2 \right) \frac{e}{A_i^x}}
+\end{equation}
+
+Para lo cual necesitamos los siguientes datos:
+
+- $A_i$, las áreas de cada parche
+
+- ubicación geográfica de cada parche que recibe ($i$) ó emite ($j$) especies
+
+- presencia ó ausencia en cada parche
+
+- Parámetro de distancia $\alpha$ (se estima con regresión no lineal)
+
+## Referencias
+
+- Ilkka Hanski (1994). [Patch-occupancy dynamics in fragmented landscapes](https://doi.org/10.1016/0169-5347(94)90177-5). *Trends in Ecology and Evolution*.
+
+- Robert MacArthur et al. (1963). [An Equilibrium Theory of Insular Zoogeography](https://doi.org/10.2307/2407089). *Evolution*.
+
+- Nicolas Gotelli y B J McGill (2006). [Null Versus Neutral Models: What’s the Difference?](https://doi.org/10.1111/j.2006.0906-7590.04714.x). *Ecography*.
+
+- Hank Stevens (2023). [Primer of Ecology using R](https://hankstevens.github.io/Primer-of-Ecology/index.html).

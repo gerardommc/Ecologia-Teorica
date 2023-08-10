@@ -85,6 +85,19 @@
 \makeatletter
 \def\fnum@table{\tablename~\thetable}
 \makeatother
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -221,6 +234,19 @@ J_i = \frac{0.3}{0.3 + 0.5} = 0.375
 \end{equation}
 \end{frame}
 
+\hypertarget{derivaciuxf3n-de-j_i}{%
+\subsection{\texorpdfstring{Derivación de
+\(J_i\)}{Derivación de J\_i}}\label{derivaciuxf3n-de-j_i}}
+
+\begin{frame}{Derivación de \(J_i\)}
+Se parte del modelo de lluvia de propágulos (única fuente de especies es
+el continente):
+
+\[\frac{dp}{dt} = c(1-p) - ep\] Donde las condiciones de equilibio son:
+
+\[p^* = \frac{c}{c+e}\]
+\end{frame}
+
 \hypertarget{matriz-de-transiciones}{%
 \subsection{Matriz de transiciones}\label{matriz-de-transiciones}}
 
@@ -263,9 +289,117 @@ punto de equilibrio. La sitribución estable de los valores propios
   \tightlist
   \item
     En áreas grandes \(E_i\) es pequeño \begin{equation}
-    x = 1
+    E_i = \left\{ \begin{aligned}
+    \frac{e}{A^x} \mathrm{\ si\ } A_i > e^{1/x}\\
+    1 \mathrm{\ si\ } A_i \leq e^{1/x}
+    \end{aligned} \right.
     \end{equation}
   \end{itemize}
+\end{itemize}
+
+Donde \(e\) es un parámetro a estimar (no es la cte de Euler).
+\end{frame}
+
+\hypertarget{ejemplo-del-efecto-del-uxe1rea-sobre-e_i}{%
+\subsection{\texorpdfstring{Ejemplo del efecto del área sobre
+\(E_i\)}{Ejemplo del efecto del área sobre E\_i}}\label{ejemplo-del-efecto-del-uxe1rea-sobre-e_i}}
+
+\begin{frame}{Ejemplo del efecto del área sobre \(E_i\)}
+\includegraphics{Hanski_files/figure-beamer/unnamed-chunk-4-1.pdf}
+\end{frame}
+
+\hypertarget{probabilidad-de-colonizaciuxf3n-c_i}{%
+\subsection{\texorpdfstring{Probabilidad de colonización
+(\(C_i\))}{Probabilidad de colonización (C\_i)}}\label{probabilidad-de-colonizaciuxf3n-c_i}}
+
+\begin{frame}{Probabilidad de colonización (\(C_i\))}
+\begin{itemize}
+\tightlist
+\item
+  Es función de migrantes y distancia de tierra continental u otros
+  parches:
+\end{itemize}
+
+\[C_i = \frac{1}{1 + \left(\frac{y'}{S_i}\right)^2}\]
+
+\(y'\) es la habilidad colonizadora de las especies
+
+\(S_i\) es una de aislamiento del parche \(i\)
+\end{frame}
+
+\hypertarget{fuxf3rmula-para-s_i}{%
+\subsection{\texorpdfstring{Fórmula para
+\(S_i\)}{Fórmula para S\_i}}\label{fuxf3rmula-para-s_i}}
+
+\begin{frame}{Fórmula para \(S_i\)}
+\[S_i = \sum_{j = i}^{n} p_j \exp(- \alpha d_{ij}) A_j\]
+
+\(n\) número total de parches \(j\) que son hábitats de las especies
+migrantes
+
+\(p_j\) es el estado de ocupación de cada parche
+
+\(d_{ij}\) es la distancia lineal entre parche \(i\) y el \(j\)
+
+\(\alpha\) es el efecto de la distancia entre \(i\) y \(j\)
+
+\(A_j\) es el área de \(j\) \(\therefore\) índice de tamaño poblacional
+\end{frame}
+
+\hypertarget{ejemplo-del-efecto-de-d_ij-y-a_j}{%
+\subsection{\texorpdfstring{Ejemplo del efecto de \(d_{ij}\) y
+\(A_j\)}{Ejemplo del efecto de d\_\{ij\} y A\_j}}\label{ejemplo-del-efecto-de-d_ij-y-a_j}}
+
+\begin{frame}{Ejemplo del efecto de \(d_{ij}\) y \(A_j\)}
+\begin{center}\includegraphics{Hanski_files/figure-beamer/unnamed-chunk-5-1} \end{center}
+\end{frame}
+
+\hypertarget{combinando-c_i-y-e_i-para-obtener-j_i}{%
+\subsection{\texorpdfstring{Combinando \(C_i\) y \(E_i\) para obtener
+\(J_i\)}{Combinando C\_i y E\_i para obtener J\_i}}\label{combinando-c_i-y-e_i-para-obtener-j_i}}
+
+\begin{frame}{Combinando \(C_i\) y \(E_i\) para obtener \(J_i\)}
+\begin{equation}
+J_i = \frac{1}{1 + \left( 1 + \left[ \frac{y'}{S_i} \right]^2 \right) \frac{e}{A_i^x}}
+\end{equation}
+
+Para lo cual necesitamos los siguientes datos:
+
+\begin{itemize}
+\item
+  \(A_i\), las áreas de cada parche
+\item
+  ubicación geográfica de cada parche que recibe (\(i\)) ó emite (\(j\))
+  especies
+\item
+  presencia ó ausencia en cada parche
+\item
+  Parámetro de distancia \(\alpha\) (se estima con regresión no lineal)
+\end{itemize}
+\end{frame}
+
+\hypertarget{referencias}{%
+\subsection{Referencias}\label{referencias}}
+
+\begin{frame}{Referencias}
+\begin{itemize}
+\item
+  Ilkka Hanski (1994).
+  \href{https://doi.org/10.1016/0169-5347(94)90177-5}{Patch-occupancy
+  dynamics in fragmented landscapes}. \emph{Trends in Ecology and
+  Evolution}.
+\item
+  Robert MacArthur et al.~(1963).
+  \href{https://doi.org/10.2307/2407089}{An Equilibrium Theory of
+  Insular Zoogeography}. \emph{Evolution}.
+\item
+  Nicolas Gotelli y B J McGill (2006).
+  \href{https://doi.org/10.1111/j.2006.0906-7590.04714.x}{Null Versus
+  Neutral Models: What's the Difference?}. \emph{Ecography}.
+\item
+  Hank Stevens (2023).
+  \href{https://hankstevens.github.io/Primer-of-Ecology/index.html}{Primer
+  of Ecology using R}.
 \end{itemize}
 \end{frame}
 

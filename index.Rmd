@@ -22,6 +22,10 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participa
 
     - [Modelos de metapoblaciones](Modelos-meta.pdf)
     
+        - [Modelo de Levins simple](Levins-simple.R)
+        
+        - [Modelo de dos poblaciones](Levins-dos-pob.R)
+    
     - [Lectura](Metapoblaciones/Stevens-Metap.pdf)
     
     - [Práctica de **R**](deSolve.pdf)

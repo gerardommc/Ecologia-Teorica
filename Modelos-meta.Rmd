@@ -297,6 +297,25 @@ E incluimos en el modelo de Levins con lluvia de propágulos:
 
 $$\frac{dp}{dt} = (c + c_e p)(1-p) - ep(1-p)$$
 
+## Propiedades del modelo con efecto de rescate
+
+Veamos que si omitimos la lluvia de propágulos, se puede simplificar de la siguiente manera:
+
+$$\frac{dp}{dt} = (c - e)p(1-p)$$
+De donde podemos deducir lo siguiente:
+
+- Si $c > e; p \rightarrow 1$
+
+- Si $c < e, p \rightarrow 0$
+
+- Si $c = e$, $p$ no cambiará y permanecerá constante
+
+- Si $p = 1$, la población permanecerá aunque $c < e$!
+ 
+## Ejercicio
+
+Explora todos estos escenarios con simulaciones utilizando R ó Excel
+
 # Destrucción de hábitat
 
 ## Racional

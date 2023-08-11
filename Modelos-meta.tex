@@ -360,7 +360,7 @@ metapoblaciones}\label{modelos-buxe1sicos-de-metapoblaciones}}
 \subsection{El concepto}\label{el-concepto}}
 
 \begin{frame}{El concepto}
-\begin{center}\includegraphics{Metapoblaciones/MEtap-May} \end{center}
+\begin{center}\includegraphics[width=2.75in]{Metapoblaciones/MEtap-May} \end{center}
 \end{frame}
 
 \hypertarget{el-concepto-1}{%
@@ -385,7 +385,7 @@ sumidero}\label{poblaciones-fuente-y-sumidero}}
 \begin{frame}{Poblaciones fuente y sumidero}
 \begin{figure}
 
-{\centering \includegraphics{Metapoblaciones/Fuente-sumidero} 
+{\centering \includegraphics[width=3.21in]{Metapoblaciones/Fuente-sumidero} 
 
 }
 
@@ -605,6 +605,35 @@ rescate}\label{modelo-de-levins-con-efecto-de-rescate}}
 E incluimos en el modelo de Levins con lluvia de propágulos:
 
 \[\frac{dp}{dt} = (c + c_e p)(1-p) - ep(1-p)\]
+\end{frame}
+
+\hypertarget{propiedades-del-modelo-con-efecto-de-rescate}{%
+\subsection{Propiedades del modelo con efecto de
+rescate}\label{propiedades-del-modelo-con-efecto-de-rescate}}
+
+\begin{frame}{Propiedades del modelo con efecto de rescate}
+Veamos que si omitimos la lluvia de propágulos, se puede simplificar de
+la siguiente manera:
+
+\[\frac{dp}{dt} = (c - e)p(1-p)\] De donde podemos deducir lo siguiente:
+
+\begin{itemize}
+\item
+  Si \(c > e; p \rightarrow 1\)
+\item
+  Si \(c < e, p \rightarrow 0\)
+\item
+  Si \(c = e\), \(p\) no cambiará y permanecerá constante
+\item
+  Si \(p = 1\), la población permanecerá aunque \(c < e\)!
+\end{itemize}
+\end{frame}
+
+\hypertarget{ejercicio}{%
+\subsection{Ejercicio}\label{ejercicio}}
+
+\begin{frame}{Ejercicio}
+Explora todos estos escenarios con simulaciones utilizando R ó Excel
 \end{frame}
 
 \hypertarget{destrucciuxf3n-de-huxe1bitat}{%

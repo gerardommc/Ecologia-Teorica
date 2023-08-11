@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.14)  10 AUG 2023 13:27
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.6)  11 AUG 2023 10:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1594,10 +1594,6 @@ LaTeX Font Info:    Font shape `TU/FiraMono(0)/b/n' will be
 ]
 File: Metapoblaciones/MEtap-May.png Graphic file (type bmp)
 <Metapoblaciones/MEtap-May.png>
-
-Overfull \vbox (31.67859pt too high) detected at line 364
- []
-
 [14
 
 ] [15
@@ -1650,6 +1646,10 @@ Overfull \vbox (1.66125pt too high) detected at line 455
 
 ] [31
 
+] [32
+
+] [33
+
 ]
 \tf@nav=\write6
 \openout6 = `Modelos-meta.nav'.
@@ -1666,12 +1666,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 33901 strings out of 476191
- 712372 string characters out of 5812072
- 1124080 words of memory out of 5000000
- 53950 multiletter control sequences out of 15000+600000
+ 33911 strings out of 476191
+ 712456 string characters out of 5812073
+ 1124191 words of memory out of 5000000
+ 53960 multiletter control sequences out of 15000+600000
  473002 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,13n,171p,1813b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Modelos-meta.pdf (31 pages).
+Output written on Modelos-meta.pdf (33 pages).

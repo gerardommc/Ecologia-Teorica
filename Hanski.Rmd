@@ -206,6 +206,6 @@ Para lo cual necesitamos los siguientes datos:
 
 - Robert MacArthur et al. (1963). [An Equilibrium Theory of Insular Zoogeography](https://doi.org/10.2307/2407089). *Evolution*.
 
-- Nicolas Gotelli y B J McGill (2006). [Null Versus Neutral Models: What’s the Difference?](https://doi.org/10.1111/j.2006.0906-7590.04714.x). *Ecography*.
+- Nicolas Gotelli (1991). [Metapopulation Models: The Rescue Effect, the Propagule Rain, and the Core-Satellite Hypothesis.](https://www.journals.uchicago.edu/doi/10.1086/285249). *The American Naturalist*.
 
 - Hank Stevens (2023). [Primer of Ecology using R](https://hankstevens.github.io/Primer-of-Ecology/index.html).

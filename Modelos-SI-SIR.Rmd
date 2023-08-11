@@ -1,0 +1,145 @@
+---
+title: "Epidemiología" 
+subtitle: "Los modelos SI y SIR"
+author: "Gerardo Martín"
+fontsize: 11pt
+output: 
+  beamer_presentation:
+    theme: metropolis
+    highlight: pygments
+    slide_level: 3
+    fig_height: 6
+    fig_caption: true
+    latex_engine: xelatex
+    keep_tex: true
+date: '28-07-2023'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'pdf')
+```
+
+## El modelo SI
+
+- Representa dinámica de infecciones con dos estados
+
+Susceptibles $\rightarrow$ Infectados
+
+\begin{align}
+\frac{dS}{dt} &= -\beta SI \\
+\frac{dI}{dt} &= \beta SI
+\end{align}
+
+Con transmisión denso-dependiente
+
+## Estado de equilibrio
+
+Para encontrarlo, nos interesa el caso donde $\dot{I} = 0$:
+
+\begin{align}
+\frac{dI}{dt} &= 0 \therefore \beta SI = 0\\
+I^* = 0; & S^* = 0
+\end{align}
+
+Entonces hay dos puntos de equilibrio, con ó sin enfermedad
+
+## Integración numérica
+
+```{r echo = T}
+beta <- 0.01
+h = 0.1
+t <- 25
+S <- numeric(t/h)
+I <- numeric(t/h)
+
+S[1] <- 100
+I[1] <- 1
+
+for(i in 2:length(S)){
+  S[i] <- S[i-1] + (- beta * S[i-1] * I[i-1]) * h
+  I[i] <- I[i-1] + beta * S[i-1] * I[i-1] * h
+}
+```
+
+## Resultado de la integración
+
+```{r echo = F, fig.align='center', fig.cap="La línea roja representa el número de infectados, y la negra el de susceptibles.", fig.width=4, fig.height=4}
+plot(1:length(S), I, col = "red", type = "l",
+     xlab = "tiempo", ylab = "Individuos")
+lines(1:length(S), S)
+```
+
+# El modelo $SIR$
+
+## Qué representa
+
+Hay tres estados:
+
+Susceptible $\rightarrow$ Infectado $\rightarrow$ Recuperado
+
+Por lo tanto hay tres ecuaciones:
+
+\begin{align}
+\frac{dS}{dt} &= -\beta SI \\
+\frac{dI}{dt} &= \beta SI - \gamma I \\
+\frac{dR}{dt} &= \gamma I
+\end{align}
+
+## Parámetros y estado de equilibrio
+
+- $\beta$ es la tasa de transmisión
+
+- $\gamma$, la tasa de recuperación, ó inverso del tiempo de duración de la infección
+
+- El estado de equilibrio también lo encontramos resolviendo para $I$:
+
+$$\beta SI - \gamma I = 0$$
+
+$$I^* = \frac{\beta S}{\gamma}$$
+
+## El concepto $R_0$
+
+- Equilibrio en $SIR$ es muy diferente de $SI$
+
+- Al inicio de una epidemia $I \approx 1$, por lo que cuando:
+
+$$I^* = \frac{\beta S}{\gamma} = 1$$
+
+Se conoce como el umbral $R_0$, y resolviendo para $S$, tenemos:
+
+$$S = \gamma/\beta$$
+
+# ¿Qué representa $S = \gamma/\beta$?
+
+## $R_0$
+
+- El tamaño crítico de la comunidad
+
+    - Densidad poblacional debajo de la cual la epidemia no puede crecer
+    
+    - Si $S < \gamma / \beta$ la infección se extingue
+    
+- Si calculamos $\beta$ y $\gamma$ para una comunidad con tamaño poblacional definido:
+
+$$R_0 = \frac{\beta S}{\gamma}$$
+
+- $R_0$ sólo tiene sentido al inicio de la epidemia
+
+- En ese estado, representa el número de casos secundarios que genera cada infectado
+
+    - Si $R_0 > 1$, la epidemia crece, si $R_0 < 1$ no habrá epidemia
+    
+## Modelo SIR con mortalidad en infectados
+
+- Caso revisado hasta ahora, no hay efecto de infección sobre supervivencia
+
+- Infecciones causan mortalidad, por lo que puede ser necesario contemplarla mediante $\alpha$:
+
+\begin{align}
+\frac{dS}{dt} &= -\beta SI \\
+\frac{dI}{dt} &= \beta SI - (\gamma + \alpha) I \\
+\frac{dR}{dt} &= \gamma I
+\end{align}
+
+## Esquema el modelo $SIR$ con mortalidad
+

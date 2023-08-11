@@ -30,7 +30,9 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participa
     
     - [Lectura](Biogeografia/Haefner-Biogeo.pdf)
     
-    - [Simulación y análisis de modelos](Simulacion-meta.Rmd)
+    - [La función de incidencia de Hanski](Hanski.pdf)
+    
+    - [Simulaciones con la función de Hanski](Hanski-simulaciones.R)
 
 3. Epidemias
 

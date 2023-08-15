@@ -69,6 +69,16 @@ plot(1:length(S), I, col = "red", type = "l",
 lines(1:length(S), S)
 ```
 
+## El modelo SI y Levins
+
+- El modelo $SI$ es equivalente al de metapoblaciones de Levins, donde individuos son los parches de hábitat
+
+- Demostración: si $N = S + I$, y dividimos todo entre $N$, $s + i = 1$ y $s = 1-i$
+
+- Sustituyendo en la ecuación para $I$, tenemos:
+
+$$\frac{di}{dt} = \beta i (1-i)$$
+
 # El modelo $SIR$
 
 ## Qué representa
@@ -143,3 +153,74 @@ $$R_0 = \frac{\beta S}{\gamma}$$
 
 ## Esquema el modelo $SIR$ con mortalidad
 
+[Esquema](Esquemas-SIR.pdf)
+
+# Modelos de transmisión frecuento-dependiente
+
+## Intro
+
+- Denso-dependencia se basa en densidad crítica de permite transmisión
+
+- Frecuento-dependencia, no requiere densidad mínima
+
+    - Representa enfermedades con dinámicas de transmisión más lenta
+    
+Denso-dependencia, ó acción de pseudo-masas:
+
+$$\beta SI$$
+
+Frecuento-dependencia:
+
+$$\beta S \frac{I}{N}$$
+
+donde $I/N$ es ...
+
+## ...
+
+La prevalencia de la infección
+
+## El modelo SIR con transmisión frecuento-dependiente
+
+\begin{align}
+\frac{dS}{dt} &= - \beta S \frac{I}{N} \\
+\frac{dI}{dt} &= \beta S \frac{I}{N} - \gamma I \\
+\frac{dR}{dt} &= \gamma I
+\end{align}
+
+A este modelo se pueden añadir términos igual que al denso-dependiente
+
+## Condiciones de estabilidad
+
+Derivemos la expresión para $R_0$, tomando en cuenta que $N = S+I$:
+
+1. $\beta  - \gamma I = 0$
+
+2. $\beta \frac{SI}{S+I} = \gamma(S+I)$
+
+3. Debido que al inicio de la epidemia $S \approx N$:
+
+$$\beta I = \gamma I \rightarrow \frac{\beta}{\gamma} = 1$$
+
+Las condiciones que evitarían la epidemia dependen de $\beta$ y $\gamma$, no de $S$
+
+# Caos en el modelo SIR
+
+## Eliminando la dimensionalidad del modelo
+
+- Transformar tamaños poblacionales en proporciones, con base en:
+
+\begin{align}
+N & = S+I+R \\
+s & = S/N \\
+i & = I/N \\
+r & = R/N \\
+n & = 1 = N/N
+\end{align}
+
+## El sistema de ecuaciones
+
+\begin{align}
+\frac{ds}{dt} & = n  - \beta si - \mu s\\
+\frac{di}{dt} & = \beta si - (\gamma + \alpha + \mu) i \\
+\frac{dr}{dt} & = \gamma i - \mu r
+\end{align}

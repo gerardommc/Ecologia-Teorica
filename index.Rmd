@@ -42,5 +42,7 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participa
 
     - [Modelos de epidemias](Modelos-epi.pdf)
     
+    - [Los modelos SI y SIR](Modelos-SI-SIR.pdf)
+    
     - [Simulación y análisis de modelos](Simulacion-epi.Rmd)
 

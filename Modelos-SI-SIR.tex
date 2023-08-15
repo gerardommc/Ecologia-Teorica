@@ -212,6 +212,24 @@ integración}\label{resultado-de-la-integraciuxf3n}}
 \end{figure}
 \end{frame}
 
+\hypertarget{el-modelo-si-y-levins}{%
+\subsection{El modelo SI y Levins}\label{el-modelo-si-y-levins}}
+
+\begin{frame}{El modelo SI y Levins}
+\begin{itemize}
+\item
+  El modelo \(SI\) es equivalente al de metapoblaciones de Levins, donde
+  individuos son los parches de hábitat
+\item
+  Demostración: si \(N = S + I\), y dividimos todo entre \(N\),
+  \(s + i = 1\) y \(s = 1-i\)
+\item
+  Sustituyendo en la ecuación para \(I\), tenemos:
+\end{itemize}
+
+\[\frac{di}{dt} = \beta i (1-i)\]
+\end{frame}
+
 \hypertarget{el-modelo-sir}{%
 \section{\texorpdfstring{El modelo
 \(SIR\)}{El modelo SIR}}\label{el-modelo-sir}}
@@ -336,5 +354,118 @@ infectados}\label{modelo-sir-con-mortalidad-en-infectados}}
 \hypertarget{esquema-el-modelo-sir-con-mortalidad}{%
 \subsection{\texorpdfstring{Esquema el modelo \(SIR\) con
 mortalidad}{Esquema el modelo SIR con mortalidad}}\label{esquema-el-modelo-sir-con-mortalidad}}
+
+\begin{frame}{Esquema el modelo \(SIR\) con mortalidad}
+\href{Esquemas-SIR.pdf}{Esquema}
+\end{frame}
+
+\hypertarget{modelos-de-transmisiuxf3n-frecuento-dependiente}{%
+\section{Modelos de transmisión
+frecuento-dependiente}\label{modelos-de-transmisiuxf3n-frecuento-dependiente}}
+
+\hypertarget{intro}{%
+\subsection{Intro}\label{intro}}
+
+\begin{frame}{Intro}
+\begin{itemize}
+\item
+  Denso-dependencia se basa en densidad crítica de permite transmisión
+\item
+  Frecuento-dependencia, no requiere densidad mínima
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Representa enfermedades con dinámicas de transmisión más lenta
+  \end{itemize}
+\end{itemize}
+
+Denso-dependencia, ó acción de pseudo-masas:
+
+\[\beta SI\]
+
+Frecuento-dependencia:
+
+\[\beta S \frac{I}{N}\]
+
+donde \(I/N\) es \ldots{}
+\end{frame}
+
+\hypertarget{section}{%
+\subsection{\ldots{}}\label{section}}
+
+\begin{frame}{\ldots{}}
+La prevalencia de la infección
+\end{frame}
+
+\hypertarget{el-modelo-sir-con-transmisiuxf3n-frecuento-dependiente}{%
+\subsection{El modelo SIR con transmisión
+frecuento-dependiente}\label{el-modelo-sir-con-transmisiuxf3n-frecuento-dependiente}}
+
+\begin{frame}{El modelo SIR con transmisión frecuento-dependiente}
+\begin{align}
+\frac{dS}{dt} &= - \beta S \frac{I}{N} \\
+\frac{dI}{dt} &= \beta S \frac{I}{N} - \gamma I \\
+\frac{dR}{dt} &= \gamma I
+\end{align}
+
+A este modelo se pueden añadir términos igual que al denso-dependiente
+\end{frame}
+
+\hypertarget{condiciones-de-estabilidad}{%
+\subsection{Condiciones de
+estabilidad}\label{condiciones-de-estabilidad}}
+
+\begin{frame}{Condiciones de estabilidad}
+Derivemos la expresión para \(R_0\), tomando en cuenta que \(N = S+I\):
+
+\begin{enumerate}
+\item
+  \(\beta - \gamma I = 0\)
+\item
+  \(\beta \frac{SI}{S+I} = \gamma(S+I)\)
+\item
+  Debido que al inicio de la epidemia \(S \approx N\):
+\end{enumerate}
+
+\[\beta I = \gamma I \rightarrow \frac{\beta}{\gamma} = 1\]
+
+Las condiciones que evitarían la epidemia dependen de \(\beta\) y
+\(\gamma\), no de \(S\)
+\end{frame}
+
+\hypertarget{caos-en-el-modelo-sir}{%
+\section{Caos en el modelo SIR}\label{caos-en-el-modelo-sir}}
+
+\hypertarget{eliminando-la-dimensionalidad-del-modelo}{%
+\subsection{Eliminando la dimensionalidad del
+modelo}\label{eliminando-la-dimensionalidad-del-modelo}}
+
+\begin{frame}{Eliminando la dimensionalidad del modelo}
+\begin{itemize}
+\tightlist
+\item
+  Transformar tamaños poblacionales en proporciones, con base en:
+\end{itemize}
+
+\begin{align}
+N & = S+I+R \\
+s & = S/N \\
+i & = I/N \\
+r & = R/N \\
+n & = 1 = N/N
+\end{align}
+\end{frame}
+
+\hypertarget{el-sistema-de-ecuaciones}{%
+\subsection{El sistema de ecuaciones}\label{el-sistema-de-ecuaciones}}
+
+\begin{frame}{El sistema de ecuaciones}
+\begin{align}
+\frac{ds}{dt} & = n  - \beta si - \mu s\\
+\frac{di}{dt} & = \beta si - (\gamma + \alpha + \mu) i \\
+\frac{dr}{dt} & = \gamma i - \mu r
+\end{align}
+\end{frame}
 
 \end{document}

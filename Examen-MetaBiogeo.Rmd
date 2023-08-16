@@ -1,0 +1,15 @@
+---
+title: "Examen: Metapoblaciones y Biogeografía de islas"
+output: pdf_document
+date: "2023-08-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Nombre:
+
+1. Explica en tus propias palabras ¿cómo ayuda el estudio de las metapoblaciones a entender la biogeografía de islas?
+
+2. Qué modelo de metapoblaciones 

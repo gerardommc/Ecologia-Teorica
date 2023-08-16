@@ -468,4 +468,36 @@ n & = 1 = N/N
 \end{align}
 \end{frame}
 
+\hypertarget{la-funciuxf3n-de-desolve}{%
+\subsection{\texorpdfstring{La función de
+\texttt{deSolve}}{La función de deSolve}}\label{la-funciuxf3n-de-desolve}}
+
+\begin{frame}[fragile]{La función de \texttt{deSolve}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sir }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(t, y, parms)\{}
+\NormalTok{  s }\OtherTok{\textless{}{-}}\NormalTok{ y[}\DecValTok{1}\NormalTok{]}
+\NormalTok{  i }\OtherTok{\textless{}{-}}\NormalTok{ y[}\DecValTok{2}\NormalTok{]}
+\NormalTok{  r }\OtherTok{\textless{}{-}}\NormalTok{ y[}\DecValTok{3}\NormalTok{]}
+  \FunctionTok{with}\NormalTok{(parms,}
+\NormalTok{       \{}
+\NormalTok{         ds }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{*}\NormalTok{ s }\SpecialCharTok{{-}}\NormalTok{ beta }\SpecialCharTok{*}\NormalTok{ s }\SpecialCharTok{*}\NormalTok{ i }\SpecialCharTok{{-}}\NormalTok{ mu }\SpecialCharTok{*}\NormalTok{ s}
+\NormalTok{         di }\OtherTok{\textless{}{-}}\NormalTok{ beta }\SpecialCharTok{*}\NormalTok{ s }\SpecialCharTok{*}\NormalTok{ i }\SpecialCharTok{{-}}\NormalTok{ (alfa }\SpecialCharTok{+}\NormalTok{ mu }\SpecialCharTok{+}\NormalTok{ gamma) }\SpecialCharTok{*}\NormalTok{ i}
+\NormalTok{         dr }\OtherTok{\textless{}{-}}\NormalTok{ gamma }\SpecialCharTok{*}\NormalTok{ i  }\SpecialCharTok{{-}}\NormalTok{ mu }\SpecialCharTok{*}\NormalTok{ r}
+         
+         \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(ds, di, dr)))}
+\NormalTok{       \})}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\hypertarget{las-dinuxe1micas-oscilatorias-de-sir}{%
+\subsection{\texorpdfstring{Las dinámicas oscilatorias de
+\(SIR\)}{Las dinámicas oscilatorias de SIR}}\label{las-dinuxe1micas-oscilatorias-de-sir}}
+
+\begin{frame}{Las dinámicas oscilatorias de \(SIR\)}
+\begin{center}\includegraphics{Modelos-SI-SIR_files/figure-beamer/unnamed-chunk-5-1} \end{center}
+\end{frame}
+
 \end{document}

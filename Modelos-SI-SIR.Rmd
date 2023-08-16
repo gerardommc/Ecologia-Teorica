@@ -224,3 +224,41 @@ n & = 1 = N/N
 \frac{di}{dt} & = \beta si - (\gamma + \alpha + \mu) i \\
 \frac{dr}{dt} & = \gamma i - \mu r
 \end{align}
+
+## La función de `deSolve`
+
+```{r echo = T}
+sir <- function(t, y, parms){
+  s <- y[1]
+  i <- y[2]
+  r <- y[3]
+  with(parms,
+       {
+         ds <- n * s - beta * s * i - mu * s
+         di <- beta * s * i - (alfa + mu + gamma) * i
+         dr <- gamma * i  - mu * r
+         
+         return(list(c(ds, di, dr)))
+       })
+}
+```
+
+```{r echo=F}
+library(deSolve)
+
+time <- seq(0, 500, by = 0.2)
+y <- c(0.99, 0.1, 0)
+parms <- list(
+  n = 0.5, beta = 0.01, mu = 0.05,
+  alfa = 0.02, gamma = 0.02
+)
+
+out <- lsoda(y = y, times = time, parms = parms, func = sir)
+```
+
+## Las dinámicas oscilatorias de $SIR$
+
+```{r echo=F, fig.height=4, fig.width=4, fig.align='center'}
+plot(out, col = "red")
+```
+

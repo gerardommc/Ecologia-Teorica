@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.6)  14 AUG 2023 18:08
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.6)  16 AUG 2023 13:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1650,6 +1650,24 @@ Overfull \vbox (21.16724pt too high) detected at line 392
 ] [22
 
 ]
+\openout4 = `Modelos-SI-SIR.vrb'.
+
+(./Modelos-SI-SIR.vrb)
+LaTeX Font Info:    Font shape `TU/FiraMono(0)/b/n' will be
+(Font)              scaled to size 10.09094pt on input line 493.
+[23
+
+]
+File: Modelos-SI-SIR_files/figure-beamer/unnamed-chunk-5-1.pdf Graphic file (ty
+pe pdf)
+<use Modelos-SI-SIR_files/figure-beamer/unnamed-chunk-5-1.pdf>
+
+Overfull \vbox (39.79709pt too high) detected at line 501
+ []
+
+[24
+
+]
 \tf@nav=\write6
 \openout6 = `Modelos-SI-SIR.nav'.
 
@@ -1661,12 +1679,12 @@ Overfull \vbox (21.16724pt too high) detected at line 392
 
 (./Modelos-SI-SIR.aux) ) 
 Here is how much of TeX's memory you used:
- 33822 strings out of 476191
- 710364 string characters out of 5812073
- 1122723 words of memory out of 5000000
- 53875 multiletter control sequences out of 15000+600000
- 479739 words of font info for 126 fonts, out of 8000000 for 9000
+ 33847 strings out of 476191
+ 711159 string characters out of 5812073
+ 1122835 words of memory out of 5000000
+ 53896 multiletter control sequences out of 15000+600000
+ 479747 words of font info for 127 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,13n,171p,1815b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Modelos-SI-SIR.pdf (22 pages).
+Output written on Modelos-SI-SIR.pdf (24 pages).

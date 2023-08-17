@@ -8,8 +8,38 @@ date: "2023-08-15"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Nombre:
+## Nombre:
 
-1. Explica en tus propias palabras ¿cómo ayuda el estudio de las metapoblaciones a entender la biogeografía de islas?
+### Total de aciertos: 10
 
-2. Qué modelo de metapoblaciones 
+1. Explica en tus propias palabras ¿cómo ayuda el estudio de las metapoblaciones a entender la biogeografía de islas? (2 puntos)
+
+2. Elabora un diagrama que represente un sistema de islas en la que sólo una fracción posee el hábitat adecuado, y que están siendo colonizadas por especies que migran desde una fuente de propágulos más grande. (1 punto)
+
+3. ¿Qué nombre le darías al modelo de modo que alguien con conocimiento de modelos metapoblacionales identifique fácilmente la estructura del modelo? (1 punto)
+
+4. Identifica los errores en el código para integrar el modelo de Levins (4 puntos):
+
+```{r echo = T, eval=F}
+c <- 0.1
+p <- numeric(50)
+N[0] <- 1
+
+for(i in 2:lenght(p)){
+  p[i] <- p[i-1] + c*p[i-1]*(1-p[i-1])-e*p[i-1] * dt
+}
+```
+
+5. Con el siguiente modelo:
+
+$$\frac{dp}{dt} = c (1-D-p) - ep$$
+y las siguientes combinaciones de parámetros
+
+```{r echo = F}
+df <- data.frame(c = c(0.1, 0.2, 0.3, 0.1, 0.2, 0.3),
+                 D = c(0.5, 0.71875, 0.79167, 0.3, 0.4, 0.5),
+                 e = c(0.7, 0.7, 0.7, 1.02, 1.72, 2.1))
+knitr::kable(df)
+```
+
+encuentra la proporción de parches ocupados que habrá ocupados constantemente. Puedes utilizar simulaciones para encontrarlo, pero se dará 1 punto extra si lo encuentras sin hacer las simulaciones (2 puntos).

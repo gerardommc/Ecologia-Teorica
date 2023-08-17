@@ -130,7 +130,7 @@ E_i = \left\{ \begin{aligned}
 \end{aligned} \right.
 \end{equation}
 
-Donde $e$ es un parámetro a estimar (no es la cte de Euler).
+Donde $x$ y $e$ es son parámetros a estimar ($e$ no es la cte de Euler).
 
 ## Ejemplo del efecto del área sobre $E_i$
 
@@ -140,7 +140,7 @@ E.p <- function(A, e=0.01, X=1.009){
   Ei <- ifelse(A > e^(1/X), e/(A^X), 1)
   Ei }
 
-curve(E.p(x), 0, 0.2, ylim=c(0,1), col = "red")
+curve(E.p(x), 0, 0.2, ylim=c(0,1), col = "red", xlab = "Área", ylab = expression(E[i]))
 ```
 
 ## Probabilidad de colonización ($C_i$)
@@ -151,7 +151,7 @@ $$C_i = \frac{1}{1 + \left(\frac{y'}{S_i}\right)^2}$$
 
 $y'$ es la habilidad colonizadora de las especies
 
-$S_i$ es una de aislamiento del parche $i$
+$S_i$ es una medida de aislamiento de la isla ó parche $i$
 
 ## Fórmula para $S_i$
 

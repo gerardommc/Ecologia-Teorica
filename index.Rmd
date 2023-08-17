@@ -44,5 +44,7 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participa
     
     - [Los modelos SI y SIR](Modelos-SI-SIR.pdf)
     
+    - [Diversidad de infecciones y modelos para ellas](Diversidad-enfermedades-infecciones.pdf)
+    
     - [Simulación y análisis de modelos](Simulacion-epi.Rmd)
 

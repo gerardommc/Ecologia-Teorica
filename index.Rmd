@@ -40,11 +40,15 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participa
 
 3. Epidemias
 
+    - [Historia de los modelos en epidemiología](Historia-modelos-epi.pdf)
+
     - [Modelos de epidemias](Modelos-epi.pdf)
     
     - [Los modelos SI y SIR](Modelos-SI-SIR.pdf)
     
     - [Diversidad de infecciones y modelos para ellas](Diversidad-enfermedades-infecciones.pdf)
+    
+    - [Modelos con dinámicas poblacionales](Modelos-din-pob.pdf)
     
     - [Simulación y análisis de modelos](Simulacion-epi.Rmd)
 

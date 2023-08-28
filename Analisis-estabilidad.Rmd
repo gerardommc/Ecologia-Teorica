@@ -1,0 +1,277 @@
+---
+title: "Análisis de estabilidad y $R_0$" 
+subtitle: "Ecología teórica"
+author: "Gerardo Martín"
+fontsize: 11pt
+output: 
+  beamer_presentation:
+    theme: metropolis
+    highlight: pygments
+    slide_level: 3
+    fig_height: 6
+    fig_caption: true
+    latex_engine: xelatex
+    keep_tex: true
+date: '28-08-2023'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# El modelo $SIR$ con dinámica poblacional
+
+## Las ecuaciones
+
+\begin{align}
+  \dot{S} & =\mu - \beta S I - \mu S\\
+  \dot{I} & = \beta S I  - (\mu + \gamma) I \\
+  \dot{R} & = \gamma I - \mu R
+\end{align}
+
+$$\dot{N} = dN / dt$$
+
+$$ N = S + I + R = 1$$
+
+## Condiciones para distribución de equilibrio
+
+Igualamos la ecuación para $\dot{I} = 0$:
+
+$$\beta SI - (\mu + \gamma)I = 0$$
+
+Factorizando $I$, tenemos:
+
+$$I(\beta S - (\mu + \gamma))=0$$
+
+## Condiciones para distribución de equilibrio
+
+Con lo que hay dos soluciones evidentes:
+
+\begin{align}
+I^* & = 0\\
+S^* & = \frac{\mu + \gamma}{\beta}\\
+\end{align}
+
+1. El equilibrio libre de enfermedad ($I^*$)
+2. El equilibrio endémico ($S^*$)
+
+## Relación con $R_0$
+
+La ecuación para $R_0$:
+
+$$R_0 = \frac{\beta}{\gamma + \mu}$$
+
+Por lo que:
+
+$$S^* = \frac{1}{R_0}$$
+
+## La distribución de equilibrio estable
+
+- Cuando hay infecciones, el nivel de susceptibles será $S^*$
+
+- Para encontrar la fracción de infectados, sustituimos $S^* = 1/R_0$ en:
+
+$$\mu - \beta S I - \mu S = 0$$
+
+de donde resolvemos para $I$, obteniendo:
+
+$$I^* = \frac{\mu}{\beta}(R_0 - 1)$$
+
+## Encontrando $R^*$
+
+Tomando en cuenta que:
+
+$$S^* + I^* + R^* = 1$$
+y que por lo tanto:
+
+$$R^* = 1 - S^* - I^*$$
+
+Sustituimos $S^*$ e $I^*$
+
+## La distribución del equilibrio endémico
+
+$$R^* = 1 - \frac{1}{R_0} - \frac{\mu}{\beta}(R_0-1)$$
+
+Tenemos entonces que:
+
+$$(S^*, I^*, R^*) = \left( \frac{1}{R_0}, \frac{\mu}{\beta}(R_0 - 1), 1 - \frac{1}{R_0} - \frac{\mu}{\beta}(R_0-1)\right)$$
+
+# Interpretación de condiciones de equilibrio
+
+## En el modelo $SIR$ con dinámicas
+
+- Oscilaciones
+
+- Decrecen con tiempo
+
+- Amplitud disminuye
+
+- Período aumenta
+
+## Simulación 
+
+Valores de parámetros y condiciones iniciales:
+
+- $1/\mu = 70$ años
+
+- $\beta = 520$ por año
+
+- $1/\gamma = 7$ días
+
+- $S(0) = 0.1$ y $I(0) = 2.5 \times 10^{-4}$
+
+- $R_0 \approx 10$ (para cálculo hay que homogeneizar unidades de parámetros)
+
+## Código de `deSolve`
+
+```{r echo = T}
+parms <- list(
+  mu = 1/(70 * 365),
+  beta = 520 / 365,
+  gamma = 1/7
+)
+
+y = c(S = 0.1, I = 2.5E-4, R = 0)
+
+t <- seq(0, 60*365)
+```
+
+## Código de `deSolve`
+
+```{r echo = T}
+sir <- function(t, y, parms){
+  S <- y[1]
+  I <- y[2]
+  R <- y[3]
+  
+  with(parms, {
+    dS <- mu - beta * S * I  - mu * S
+    dI <- beta * S * I  - (mu + gamma) * I
+    dR <- gamma * I - mu * R
+
+    return(list(c(dS, dI, dR)))
+    })
+}
+```
+
+## Código de `deSolve`
+
+```{r echo = T}
+library(deSolve)
+sim <- lsoda(y = y, times =t, 
+             parms = parms, 
+             func = sir)
+```
+
+## Resultado
+
+```{r echo=F, fig.height=3, fig.width=5, message=FALSE}
+sim.df <- data.frame(sim)
+
+library(ggplot2)
+
+ggplot(sim.df) + geom_line(aes(x = time, y = I))
+```
+
+## Resultado
+
+```{r echo = F, fig.height=3, fig.width=5, message=FALSE}
+ggplot(sim.df) + geom_line(aes(x = time, y = S))
+```
+
+# Actividad
+
+Calcula de las condiciones de equilibrio endémico con los valores de los parámetros utilizados
+
+# Un marco más generalizable para el análisis de estabilidad
+
+## La matriz Jacobiana ($J$)
+
+\begin{equation}
+J = \left[
+\begin{matrix}
+\frac{\partial f^*_1}{\partial N_1} & \frac{\partial f^*_1}{\partial N_2} & \dots & \frac{\partial f^*_1}{\partial N_n} \\
+
+\frac{\partial f^*_2}{\partial N_1} & \frac{\partial f^*_2}{\partial N_2} & \dots & \frac{\partial f^*_2}{\partial N_n} \\
+
+\vdots & \ddots & & \vdots \\
+
+\frac{\partial f^*_n}{\partial N_1} & \frac{\partial f^*_n}{\partial N_2} & \dots & \frac{\partial f^*_n}{\partial N_n} \\
+\end{matrix}
+\right]
+\end{equation}
+
+## Desmenuzando
+
+- $f^*_1 \rightarrow \dot{S} = 0$
+
+- $f^*_2 \rightarrow I^*$
+
+- $f^*_3 \rightarrow R^*$
+
+- $\partial S^* / \partial S$ quiere decir que es una derivada parcial
+
+    - Se calcula igual, pero se considera que todo lo demás es constante
+    
+## Obteniendo las derivadas parciales
+
+$$S^* = \mu - \beta S^*I^* - \mu S^*$$
+
+Si sólo consideramos que $S$ es una variable:
+
+$$\frac{\partial S^*}{\partial S} = -\beta I* - \mu$$
+
+## Obteniendo las derivadas parciales
+
+En la derivada parcial con respecto de $I$, tratamos a $S$ como constante y a $I$ como variable:
+
+$$\frac{\partial S^*}{\partial I} = -\beta S^*$$
+
+Y en la de $R$, $S$ e $I$ son constantes
+
+$$\frac{\partial S^*}{\partial R} = 0$$
+
+# La matriz completa una vez que calculamos todas las parciales
+
+## Matriz $J$ de $SIR$
+
+\begin{equation}
+J = \left[
+\begin{matrix}
+-\beta I^* - \mu & - \beta S* &  0 \\
+\beta I^* & \beta S^* - (\gamma + \mu) & 0 \\
+0 & \gamma & -\mu
+\end{matrix}
+\right]
+\end{equation}
+
+## Qué se hace con $J$
+
+- Para encontrar cómo se llegará al equilibrio endémico, calculamos los valores propios ($\lambda_J$)
+
+- Si tenemos 3 compartimentos, habrá 3 valores propios
+
+- $\lambda$ puede ser complejo, (p. ej. $\lambda = 1 - 3\sqrt{-1} = 1-3i$)
+
+- Si $\lambda \in \mathbb{Z} \rightarrow$ se llegará al equilibrio endémico por medio de oscilaciones
+
+- Si la parte real de $\lambda < 0$ el sistema eventualmente se equilibrará
+
+# Ejercicio 2
+
+Sustituye los parámetros en $J$ y calcula los valores propios (puedes usar cualquier herramienta).
+
+## Para finalizar
+
+- Las funciones $f^*$ para $J$ pueden ser cualesquiera
+
+- Método se puede aplicar para todo tipo de infecciones en una población
+
+- Otras cantidades importantes a calcular son la **edad promedio de primera infección** cuando la infección es endémica
+
+    - Expresión derivada de $J$ se puede utilizar en análisis de datos provenientes de poblaciones
+    
+## Literatura
+
+Keeling y Rohani (2007). Modeling Infectious Diseases in Humans and Animals. Princeton (en existencia en la biblioteca).
+

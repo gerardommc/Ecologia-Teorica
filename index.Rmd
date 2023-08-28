@@ -48,7 +48,6 @@ Ver [Encuadre](Encuadre.pdf), [Programa](Programa.pdf), [Calendario de participa
     
     - [Diversidad de infecciones y modelos para ellas](Diversidad-enfermedades-infecciones.pdf)
     
-    - [Modelos con dinámicas poblacionales](Modelos-din-pob.pdf)
+    - [Análisis de estabilidad y $R_0$](Analisis-estabilidad.pdf)
     
-    - [Simulación y análisis de modelos](Simulacion-epi.Rmd)
 

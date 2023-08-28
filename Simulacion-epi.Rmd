@@ -1,0 +1,69 @@
+---
+title: "Análisis y simulación de epidemias" 
+author: "Gerardo Martín"
+fontsize: 11pt
+output: 
+  beamer_presentation:
+    theme: metropolis
+    highlight: pygments
+    slide_level: 3
+    fig_height: 6
+    fig_caption: true
+    latex_engine: xelatex
+    keep_tex: true
+date: '28-07-2023'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# El modelo SI
+
+## Functión del modelo
+
+```{r echo=T}
+SI <- function(t, y, parms){
+  S <- y[1]
+  I <- y[2]
+  with(parms, {
+    beta <- beta
+    
+    dS <- -beta * S * I
+    dI <- beta * S * I
+    
+    return(list(c(dS, dI)))
+  })
+}
+```
+
+## Parámetros
+
+El modelo SI, sólo requiere de $\beta$
+
+Aquí iniciaremos también a $y$ y $t$:
+
+```{r echo = T}
+parms <- list(beta = 0.01)
+t <- seq(0, 25, by = 0.1)
+y <- c(99, 1)
+```
+
+## Simulación
+
+```{r echo = T}
+library(deSolve)
+
+sim <- lsoda(y = y, times = t, 
+             func = SI, parms = parms)
+```
+
+## Resultado
+
+```{r echo = F, fig.align='center', fig.align='center', fig.width=6, fig.height=3}
+plot(sim)
+
+```
+
+# El modelo SIR
+

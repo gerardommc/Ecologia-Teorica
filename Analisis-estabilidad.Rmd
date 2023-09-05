@@ -219,7 +219,7 @@ $$S^* = \mu - \beta S^*I^* - \mu S^*$$
 
 Si sólo consideramos que $S$ es una variable:
 
-$$\frac{\partial S^*}{\partial S} = -\beta I* - \mu$$
+$$\frac{\partial S^*}{\partial S} = -\beta I^* - \mu$$
 
 ## Obteniendo las derivadas parciales
 
@@ -238,7 +238,7 @@ $$\frac{\partial S^*}{\partial R} = 0$$
 \begin{equation}
 J = \left[
 \begin{matrix}
--\beta I^* - \mu & - \beta S* &  0 \\
+-\beta I^* - \mu & - \beta S^* &  0 \\
 \beta I^* & \beta S^* - (\gamma + \mu) & 0 \\
 0 & \gamma & -\mu
 \end{matrix}

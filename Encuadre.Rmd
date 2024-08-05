@@ -97,15 +97,17 @@ Más info en mi sitio personal (aún en construcción!):
 
 ## ¿Quiénes lo impartiremos?
 
-1. Yo (Meta, Bio, Epi)
+1. Yo (Intro, Meta, Bio, Epi)
 
-2. Brenda Solórzano (Mol, Mod Gen)
+2. Grecia Montalvo (Mol, Mod Gen)
 
-3. Jaime Zaldívar (Plag, Int)
+3. Israel Medina (Plag)
 
 4. Carlos Yáñez (Inv)
 
 5. Jorge Lopez Rocha (Pesca, caza)
+
+6. Rusby Contreras (Int)
 
 ## ¿Qué vamos a aprender?
 
@@ -115,11 +117,11 @@ Mis secciones del curso
 
     - Hablar de su historia
     
-2. En qué consisten las metapoblaciones
+2. Representación matemática y Revisión de modelos de variación biológica de: 
 
-    - Cómo se les representa matemáticamente
+    - Biogeografía de islas y metapoblaciones
     
-    - Revisar una serie de modelos que representan diferentes mecanismos de dinámica metapoblacional
+    - Epidemiología
     
 ## ¿Qué vamos a aprender?
     
@@ -151,6 +153,9 @@ Promedio ponderado por tiempo de participación de cada profesor/a
 
 - Classroom del curso: [**fb5pn2x**](https://classroom.google.com/c/NjE3NDQ4Njg5NDgz?cjc=fb5pn2x)
 
-- [Sitio del curso](https://gerardommc.github.io/Ecologia-Teorica/)
+- Sitio del curso:
+
+    - [https://gerardommc.github.io/Ecologia-Teorica/](https://gerardommc.github.io/Ecologia-Teorica/)
+
 
 

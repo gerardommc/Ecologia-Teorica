@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.6.14)  28 AUG 2023 10:20
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2024.3.22)  5 AUG 2024 10:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1567,7 +1567,26 @@ LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/it' will be
 
 ] [15
 
-] [16
+]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.30167pt on input line 373.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.21117pt on input line 373.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.15083pt on input line 373.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.30258pt on input line 373.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.2118pt on input line 373.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.15129pt on input line 373.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.3006pt on input line 373.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.21042pt on input line 373.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.1503pt on input line 373.
+[16
 
 ]
 \tf@nav=\write5
@@ -1581,11 +1600,11 @@ LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/it' will be
 
 (./Encuadre.aux) ) 
 Here is how much of TeX's memory you used:
- 33228 strings out of 476191
- 699353 string characters out of 5812072
- 1111754 words of memory out of 5000000
- 53315 multiletter control sequences out of 15000+600000
- 472994 words of font info for 85 fonts, out of 8000000 for 9000
+ 33274 strings out of 476191
+ 700840 string characters out of 5812072
+ 1112753 words of memory out of 5000000
+ 53351 multiletter control sequences out of 15000+600000
+ 475896 words of font info for 103 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,13n,171p,1809b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
 

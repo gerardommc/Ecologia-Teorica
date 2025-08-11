@@ -12,7 +12,7 @@ output:
     fig_caption: true
     latex_engine: xelatex
     keep_tex: true
-date: '28-07-2023'
+date: '11-08-2025'
 ---
 
 ```{r setup, include=FALSE}
@@ -103,7 +103,7 @@ Más info en mi sitio personal (aún en construcción!):
 
 3. Israel Medina (Plag)
 
-4. Carlos Yáñez (Inv)
+4. Aníbal Díaz de la Vega (Inv)
 
 5. Jorge Lopez Rocha (Pesca, caza)
 

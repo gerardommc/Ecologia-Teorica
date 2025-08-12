@@ -22,13 +22,13 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
@@ -118,25 +118,24 @@
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
@@ -153,8 +152,7 @@
 \begin{document}
 \frame{\titlepage}
 
-\hypertarget{intro}{%
-\subsection{Intro}\label{intro}}
+\subsection{Intro}\label{intro}
 
 \begin{frame}{Intro}
 \begin{itemize}
@@ -180,8 +178,7 @@
 \end{itemize}
 \end{frame}
 
-\hypertarget{recordatorio}{%
-\subsection{Recordatorio}\label{recordatorio}}
+\subsection{Recordatorio}\label{recordatorio}
 
 \begin{frame}{Recordatorio}
 Ecuación diferencial:
@@ -208,9 +205,8 @@ Ecuación diferencial:
 \end{itemize}
 \end{frame}
 
-\hypertarget{ejemplo-con-funciuxf3n-lineal}{%
 \subsection{Ejemplo con función
-lineal}\label{ejemplo-con-funciuxf3n-lineal}}
+lineal}\label{ejemplo-con-funciuxf3n-lineal}
 
 \begin{frame}{Ejemplo con función lineal}
 \[f(x) = a + bx\]
@@ -224,24 +220,22 @@ Y representada con la notación de Leibniz:
 \[\frac{df(x)}{dx} = b\]
 \end{frame}
 
-\hypertarget{ejemplo-con-funciuxf3n-cuadruxe1tica}{%
 \subsection{Ejemplo con función
-cuadrática}\label{ejemplo-con-funciuxf3n-cuadruxe1tica}}
+cuadrática}\label{ejemplo-con-funciuxf3n-cuadruxe1tica}
 
 \begin{frame}{Ejemplo con función cuadrática}
 \[f(x) = a + bx + cx^2\]
 
 La derivada de \(f(x)\) es;
 
-\[f'(x) = b + cx\]
+\[f'(x) = b + 2cx\]
 
 Y representada con la notación de Leibniz:
 
-\[\frac{df(x)}{dx} = b + cx\]
+\[\frac{df(x)}{dx} = b + 2cx\]
 \end{frame}
 
-\hypertarget{modelo-exponencial}{%
-\subsection{Modelo exponencial}\label{modelo-exponencial}}
+\subsection{Modelo exponencial}\label{modelo-exponencial}
 
 \begin{frame}{Modelo exponencial}
 En la ecuación
@@ -253,8 +247,7 @@ El tiempo está implícito, pero se puede integrar para obtener:
 \[N(t) = N_0 e^{rt}\]
 \end{frame}
 
-\hypertarget{integraciuxf3n-numuxe9rica}{%
-\subsection{Integración numérica}\label{integraciuxf3n-numuxe9rica}}
+\subsection{Integración numérica}\label{integraciuxf3n-numuxe9rica}
 
 \begin{frame}{Integración numérica}
 A veces no es posible integrar analíticamente, por lo que se recurre a
@@ -269,8 +262,7 @@ podemos resolver para \(f(x + h)\):
 \[f(x + h) = f(x) + f'(x) \times h\]
 \end{frame}
 
-\hypertarget{integraciuxf3n-numuxe9rica-1}{%
-\subsection{Integración numérica}\label{integraciuxf3n-numuxe9rica-1}}
+\subsection{Integración numérica}\label{integraciuxf3n-numuxe9rica-1}
 
 \begin{frame}{Integración numérica}
 Método de Euler, base de todas integración numérica
@@ -291,12 +283,10 @@ Inicio de rutina de integración:
 \end{enumerate}
 \end{frame}
 
-\hypertarget{ejemplo-de-integraciuxf3n-numuxe9rica}{%
 \section{Ejemplo de integración
-numérica}\label{ejemplo-de-integraciuxf3n-numuxe9rica}}
+numérica}\label{ejemplo-de-integraciuxf3n-numuxe9rica}
 
-\hypertarget{modelo-exponencial-1}{%
-\subsection{Modelo exponencial}\label{modelo-exponencial-1}}
+\subsection{Modelo exponencial}\label{modelo-exponencial-1}
 
 \begin{frame}{Modelo exponencial}
 \begin{enumerate}
@@ -316,17 +306,15 @@ numérica}\label{ejemplo-de-integraciuxf3n-numuxe9rica}}
 \[N(1.5) = N(1) + N'(1) \times h = 11.025 + 0.1\times 11.025 \times 0.5 = 11.57625\]
 \end{frame}
 
-\hypertarget{soluciuxf3n-para-10-pasos-de-tiempo}{%
 \subsection{Solución para 10 pasos de
-tiempo}\label{soluciuxf3n-para-10-pasos-de-tiempo}}
+tiempo}\label{soluciuxf3n-para-10-pasos-de-tiempo}
 
 \begin{frame}{Solución para 10 pasos de tiempo}
-\includegraphics{Modelos-meta_files/figure-beamer/unnamed-chunk-1-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{Modelos-meta_files/figure-beamer/unnamed-chunk-1-1.pdf}}
 \end{frame}
 
-\hypertarget{utilizando-r-para-hacer-integraciuxf3n-numuxe9rica}{%
 \subsection{Utilizando R para hacer integración
-numérica}\label{utilizando-r-para-hacer-integraciuxf3n-numuxe9rica}}
+numérica}\label{utilizando-r-para-hacer-integraciuxf3n-numuxe9rica}
 
 \begin{frame}[fragile]{Utilizando R para hacer integración numérica}
 Iniciando valores
@@ -352,19 +340,16 @@ Iteraciones de la integración
 \end{Shaded}
 \end{frame}
 
-\hypertarget{modelos-buxe1sicos-de-metapoblaciones}{%
 \section{Modelos básicos de
-metapoblaciones}\label{modelos-buxe1sicos-de-metapoblaciones}}
+metapoblaciones}\label{modelos-buxe1sicos-de-metapoblaciones}
 
-\hypertarget{el-concepto}{%
-\subsection{El concepto}\label{el-concepto}}
+\subsection{El concepto}\label{el-concepto}
 
 \begin{frame}{El concepto}
 \begin{center}\includegraphics[width=2.75in]{Metapoblaciones/MEtap-May} \end{center}
 \end{frame}
 
-\hypertarget{el-concepto-1}{%
-\subsection{El concepto}\label{el-concepto-1}}
+\subsection{El concepto}\label{el-concepto-1}
 
 \begin{frame}{El concepto}
 \begin{itemize}
@@ -378,9 +363,8 @@ metapoblaciones}\label{modelos-buxe1sicos-de-metapoblaciones}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{poblaciones-fuente-y-sumidero}{%
 \subsection{Poblaciones fuente y
-sumidero}\label{poblaciones-fuente-y-sumidero}}
+sumidero}\label{poblaciones-fuente-y-sumidero}
 
 \begin{frame}{Poblaciones fuente y sumidero}
 \begin{figure}
@@ -393,8 +377,7 @@ sumidero}\label{poblaciones-fuente-y-sumidero}}
 \end{figure}
 \end{frame}
 
-\hypertarget{modelo-de-levins}{%
-\subsection{Modelo de Levins}\label{modelo-de-levins}}
+\subsection{Modelo de Levins}\label{modelo-de-levins}
 
 \begin{frame}{Modelo de Levins}
 \begin{itemize}
@@ -414,8 +397,7 @@ sumidero}\label{poblaciones-fuente-y-sumidero}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{racional}{%
-\subsection{Racional}\label{racional}}
+\subsection{Racional}\label{racional}
 
 \begin{frame}{Racional}
 \begin{itemize}
@@ -432,8 +414,7 @@ sumidero}\label{poblaciones-fuente-y-sumidero}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{integraciuxf3n}{%
-\subsection{Integración}\label{integraciuxf3n}}
+\subsection{Integración}\label{integraciuxf3n}
 
 \begin{frame}[fragile]{Integración}
 \begin{Shaded}
@@ -447,16 +428,14 @@ sumidero}\label{poblaciones-fuente-y-sumidero}}
 \end{Shaded}
 \end{frame}
 
-\hypertarget{integraciuxf3n-1}{%
-\subsection{Integración}\label{integraciuxf3n-1}}
+\subsection{Integración}\label{integraciuxf3n-1}
 
 \begin{frame}{Integración}
-\includegraphics{Modelos-meta_files/figure-beamer/unnamed-chunk-7-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{Modelos-meta_files/figure-beamer/unnamed-chunk-7-1.pdf}}
 \end{frame}
 
-\hypertarget{condiciones-de-estabilidad}{%
 \subsection{Condiciones de
-estabilidad}\label{condiciones-de-estabilidad}}
+estabilidad}\label{condiciones-de-estabilidad}
 
 \begin{frame}{Condiciones de estabilidad}
 \begin{itemize}
@@ -482,8 +461,7 @@ estabilidad}\label{condiciones-de-estabilidad}}
 \end{enumerate}
 \end{frame}
 
-\hypertarget{supuestos-del-modelo}{%
-\subsection{Supuestos del modelo}\label{supuestos-del-modelo}}
+\subsection{Supuestos del modelo}\label{supuestos-del-modelo}
 
 \begin{frame}{Supuestos del modelo}
 \begin{itemize}
@@ -506,8 +484,7 @@ estabilidad}\label{condiciones-de-estabilidad}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{puntos-de-equilibrio}{%
-\subsection{Puntos de equilibrio}\label{puntos-de-equilibrio}}
+\subsection{Puntos de equilibrio}\label{puntos-de-equilibrio}
 
 \begin{frame}{Puntos de equilibrio}
 \begin{enumerate}
@@ -526,11 +503,9 @@ estabilidad}\label{condiciones-de-estabilidad}}
 \end{enumerate}
 \end{frame}
 
-\hypertarget{lluvia-de-propuxe1gulos}{%
-\section{Lluvia de propágulos}\label{lluvia-de-propuxe1gulos}}
+\section{Lluvia de propágulos}\label{lluvia-de-propuxe1gulos}
 
-\hypertarget{diferencias-con-levins}{%
-\subsection{Diferencias con Levins}\label{diferencias-con-levins}}
+\subsection{Diferencias con Levins}\label{diferencias-con-levins}
 
 \begin{frame}{Diferencias con Levins}
 \begin{itemize}
@@ -553,8 +528,7 @@ estabilidad}\label{condiciones-de-estabilidad}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{puntos-de-equilibrio-1}{%
-\subsection{Punto(s) de equilibrio}\label{puntos-de-equilibrio-1}}
+\subsection{Punto(s) de equilibrio}\label{puntos-de-equilibrio-1}
 
 \begin{frame}{Punto(s) de equilibrio}
 \[p^* = \frac{c}{c-e}\]
@@ -567,9 +541,8 @@ Aprximadamente el 67\% de los parches permanecerán ocupados
 contstantemente
 \end{frame}
 
-\hypertarget{modelo-de-levins-con-lluvia-de-propuxe1gulos}{%
 \subsection{Modelo de Levins con lluvia de
-propágulos}\label{modelo-de-levins-con-lluvia-de-propuxe1gulos}}
+propágulos}\label{modelo-de-levins-con-lluvia-de-propuxe1gulos}
 
 \begin{frame}{Modelo de Levins con lluvia de propágulos}
 Modelo
@@ -586,9 +559,8 @@ Modelo
 \end{itemize}
 \end{frame}
 
-\hypertarget{modelo-de-levins-con-efecto-de-rescate}{%
 \subsection{Modelo de Levins con efecto de
-rescate}\label{modelo-de-levins-con-efecto-de-rescate}}
+rescate}\label{modelo-de-levins-con-efecto-de-rescate}
 
 \begin{frame}{Modelo de Levins con efecto de rescate}
 \begin{itemize}
@@ -607,9 +579,8 @@ E incluimos en el modelo de Levins con lluvia de propágulos:
 \[\frac{dp}{dt} = (c + c_e p)(1-p) - ep(1-p)\]
 \end{frame}
 
-\hypertarget{propiedades-del-modelo-con-efecto-de-rescate}{%
 \subsection{Propiedades del modelo con efecto de
-rescate}\label{propiedades-del-modelo-con-efecto-de-rescate}}
+rescate}\label{propiedades-del-modelo-con-efecto-de-rescate}
 
 \begin{frame}{Propiedades del modelo con efecto de rescate}
 Veamos que si omitimos la lluvia de propágulos, se puede simplificar de
@@ -629,18 +600,15 @@ la siguiente manera:
 \end{itemize}
 \end{frame}
 
-\hypertarget{ejercicio}{%
-\subsection{Ejercicio}\label{ejercicio}}
+\subsection{Ejercicio}\label{ejercicio}
 
 \begin{frame}{Ejercicio}
 Explora todos estos escenarios con simulaciones utilizando R ó Excel
 \end{frame}
 
-\hypertarget{destrucciuxf3n-de-huxe1bitat}{%
-\section{Destrucción de hábitat}\label{destrucciuxf3n-de-huxe1bitat}}
+\section{Destrucción de hábitat}\label{destrucciuxf3n-de-huxe1bitat}
 
-\hypertarget{racional-1}{%
-\subsection{Racional}\label{racional-1}}
+\subsection{Racional}\label{racional-1}
 
 \begin{frame}{Racional}
 \begin{itemize}
@@ -664,8 +632,7 @@ Explora todos estos escenarios con simulaciones utilizando R ó Excel
 \end{itemize}
 \end{frame}
 
-\hypertarget{el-modelo}{%
-\subsection{El modelo}\label{el-modelo}}
+\subsection{El modelo}\label{el-modelo}
 
 \begin{frame}{El modelo}
 Modificación del modelo clásico (sin lluvia de propágulos ni rescate)

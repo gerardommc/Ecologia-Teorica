@@ -63,11 +63,11 @@ $$f(x) = a + bx + cx^2$$
 
 La derivada de $f(x)$ es;
 
-$$f'(x) = b + cx$$
+$$f'(x) = b + 2cx$$
 
 Y representada con la notación de Leibniz:
 
-$$\frac{df(x)}{dx} = b + cx$$
+$$\frac{df(x)}{dx} = b + 2cx$$
 
 ## Modelo exponencial
 
